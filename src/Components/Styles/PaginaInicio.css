@@ -1,3 +1,13 @@
+.pagina-inicio {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('/Fondo1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
 body{
     background-size: cover; 
     background-position: center;    
@@ -86,7 +96,7 @@ h1{
 a{
     font-weight: bold;
     text-decoration: underline;
-    color: #c6a664;
+    color: #000000;
 }
 a:hover{
     color: #c6a664;
@@ -138,14 +148,4 @@ a:hover{
 }
 .redes:hover .botones_redes {
     opacity: 1;
-}
-.pagina-inicio {
-  min-height: 100vh;
-  width: 100%;
-  background-image: url('/Fondo.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
 }
