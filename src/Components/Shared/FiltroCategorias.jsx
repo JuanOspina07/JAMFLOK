@@ -32,11 +32,11 @@ const FiltroCategorias = ({ isOpen, onClose, onFilter }) => {
 
   const handleApplyFilter = () => {
     onFilter(selectedCategories);
-    setShowToast(true);  // Mostrar toast
+    setShowToast(true);  
     setTimeout(() => {
       setShowToast(false);
       onClose();
-    }, 3000); // Ocultar toast y cerrar modal después de 3 segundos
+    }, 1600); 
   };
 
   return (
