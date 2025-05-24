@@ -7,12 +7,19 @@ import facebook from "../../../public/Facebook.jpeg"; // Asegúrate de que la ru
 import instagram from "../../../public/Instagram.jpeg"; // Asegúrate de que la ruta sea correcta
 import tiktok from "../../../public/TikTok.jpeg"; // Asegúrate de que la ruta sea correcta
 import linkedin from "../../../public/Linkedin.jpeg"; // Asegúrate de que la ruta sea correcta
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 export const PaginaInicio = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
     // Redirige a la ruta /login (ajusta si tienes otra ruta)
     navigate("/login");
+  };
+
+  const handleCliente = () => {
+    navigate("/cliente");
+    console.log("voy donde el cliente")
   };
 
   return (
@@ -23,6 +30,9 @@ export const PaginaInicio = () => {
           <button className="options">Inicio</button>
           <button className="options">Soporte</button>
           <button className="options">Información</button>
+          <button className="options icon-button" onClick={handleCliente}>
+            <AccountCircleIcon style={{ fontSize: 28 }} />
+          </button>
         </div>
       </div>
       <div className="bienvenida">
