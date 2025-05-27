@@ -1,0 +1,118 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #e5e5e5;
+}
+
+/* Contenedor general */
+.login-page {
+  min-height: 100vh;
+}
+
+/* Encabezado */
+.header {
+  background-color: #1f1f1f;
+  color: #C6A664;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.logo {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.nav button {
+  background-color: #C6A664;
+  color: #1f1f1f;
+  border: none;
+  margin-left: 15px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nav button:hover {
+  background-color: #b89d4f;
+}
+
+/* Contenedor del registro */
+.Register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: #e5e5e5;
+}
+
+.Register-box {
+  background-color: #2e2e2e;
+  padding: 40px 35px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+.Register-box h2 {
+  color: #C6A664;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+/* Estilo para cada campo */
+.UserBox2 {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.inputfield2 {
+  width: 100%;
+  padding: 10px 12px;
+  background: #444;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.inputfield2:focus {
+  border: 2px solid #C6A664;
+}
+
+.label2 {
+  color: #C6A664;
+  display: block;
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+/* Botón de registro */
+.btresg {
+  background-color: #C6A664;
+  color: #1f1f1f;
+  border: none;
+  padding: 12px;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.btresg:hover {
+  background-color: #b89d4f;
+}

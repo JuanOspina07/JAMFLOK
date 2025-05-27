@@ -12,15 +12,20 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 export const PaginaInicio = () => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    // Redirige a la ruta /login (ajusta si tienes otra ruta)
-    navigate("/login");
-  };
+
+const handleClick = () => {
+  navigate("/login"); // Esto redirige a la ruta del login
+};
+const handleRegister = () => {
+  navigate("/Register"); // Esto redirige a la ruta del login
+};
+
 
   const handleCliente = () => {
     navigate("/cliente");
     console.log("voy donde el cliente")
   };
+
 
   return (
     <div className="pagina-inicio">
@@ -44,9 +49,9 @@ export const PaginaInicio = () => {
         <p className="text">
           ¿No tienes una cuenta?{" "}
           <a
-            href="https://instagram.com/08kamilo"
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={handleRegister}
+            className="link"
+            style={{ cursor: "pointer" }}
           >
             crea una aquí
           </a>
