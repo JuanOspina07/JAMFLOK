@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/PaginaInicio.css"; // Asegúrate de que la ruta sea correcta
-import fondo from "../../../public/Fondo.jpeg"; // Asegúrate de que la ruta sea correcta
-import logo from "../../../public/Logo.jpeg"; // Asegúrate de que la ruta sea correcta
-import facebook from "../../../public/Facebook.jpeg"; // Asegúrate de que la ruta sea correcta
-import instagram from "../../../public/Instagram.jpeg"; // Asegúrate de que la ruta sea correcta
-import tiktok from "../../../public/TikTok.jpeg"; // Asegúrate de que la ruta sea correcta
-import linkedin from "../../../public/Linkedin.jpeg"; // Asegúrate de que la ruta sea correcta
+import fondo from "../../../public/Fondo1.jpg"; // Asegúrate de que la ruta sea correcta
+import logo from "../../../public/Logo.png"; // Asegúrate de que la ruta sea correcta
+import facebook from "../../../public/Facebook.png"; // Asegúrate de que la ruta sea correcta
+import instagram from "../../../public/Instagram.png"; // Asegúrate de que la ruta sea correcta
+import tiktok from "../../../public/TikTok.png"; // Asegúrate de que la ruta sea correcta
+import linkedin from "../../../public/Linkedin.png"; // Asegúrate de que la ruta sea correcta
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export const PaginaInicio = () => {
@@ -49,6 +49,9 @@ const handleRegister = () => {
         <p className="text">
           ¿No tienes una cuenta?{" "}
           <a
+            href="instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={handleRegister}
             className="link"
             style={{ cursor: "pointer" }}
