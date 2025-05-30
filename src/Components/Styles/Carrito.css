@@ -1,0 +1,61 @@
+/* Carrito.css */
+.carrito-container {
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  width: 300px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  z-index: 1000;
+}
+
+.carrito-container h3 {
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.carrito-item {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.carrito-item p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.carrito-precio {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.carrito-total {
+  text-align: right;
+  margin: 15px 0;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  font-size: 16px;
+}
+
+.carrito-pagar-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.carrito-pagar-btn:hover {
+  background-color: #45a049;
+}
