@@ -1,19 +1,31 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/PaginaInicio.css"; // Asegúrate de que la ruta sea correcta
-import fondo from "../../../public/Fondo.jpeg"; // Asegúrate de que la ruta sea correcta
-import logo from "../../../public/Logo.jpeg"; // Asegúrate de que la ruta sea correcta
-import facebook from "../../../public/Facebook.jpeg"; // Asegúrate de que la ruta sea correcta
-import instagram from "../../../public/Instagram.jpeg"; // Asegúrate de que la ruta sea correcta
-import tiktok from "../../../public/TikTok.jpeg"; // Asegúrate de que la ruta sea correcta
-import linkedin from "../../../public/Linkedin.jpeg"; // Asegúrate de que la ruta sea correcta
+import fondo from "../../../public/Fondo1.jpg"; // Asegúrate de que la ruta sea correcta
+import logo from "../../../public/Logo.png"; // Asegúrate de que la ruta sea correcta
+import facebook from "../../../public/Facebook.png"; // Asegúrate de que la ruta sea correcta
+import instagram from "../../../public/Instagram.png"; // Asegúrate de que la ruta sea correcta
+import tiktok from "../../../public/TikTok.png"; // Asegúrate de que la ruta sea correcta
+import linkedin from "../../../public/Linkedin.png"; // Asegúrate de que la ruta sea correcta
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 export const PaginaInicio = () => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    // Redirige a la ruta /login (ajusta si tienes otra ruta)
-    navigate("/login");
+
+const handleClick = () => {
+  navigate("/login"); // Esto redirige a la ruta del login
+};
+const handleRegister = () => {
+  navigate("/Register"); // Esto redirige a la ruta del login
+};
+
+
+  const handleCliente = () => {
+    navigate("/cliente");
+    console.log("voy donde el cliente")
   };
+
 
   return (
     <div className="pagina-inicio">
@@ -23,6 +35,9 @@ export const PaginaInicio = () => {
           <button className="options">Inicio</button>
           <button className="options">Soporte</button>
           <button className="options">Información</button>
+          <button className="options icon-button" onClick={handleCliente}>
+            <AccountCircleIcon style={{ fontSize: 28 }} />
+          </button>
         </div>
       </div>
       <div className="bienvenida">
@@ -34,9 +49,12 @@ export const PaginaInicio = () => {
         <p className="text">
           ¿No tienes una cuenta?{" "}
           <a
-            href="https://instagram.com/08kamilo"
+            href="instagram.com"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleRegister}
+            className="link"
+            style={{ cursor: "pointer" }}
           >
             crea una aquí
           </a>

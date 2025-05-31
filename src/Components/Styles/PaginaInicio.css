@@ -1,148 +1,160 @@
-body{
-    background-size: cover; 
-    background-position: center;    
-    background-repeat: no-repeat;
-    margin: 0;
-    font-size: 32px;
-    width: 100%;
-    height: 100vh;
-    box-sizing: border-box;
+
+body {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  font-size: 32px;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
 }
-.head{
-    display: flex;
-    align-items: center;
-    background: #2c2c2c;
-    box-shadow: 0px 0px 30px #000000;
-    height: 5em;
-    width: 100%;
-    margin: 0;
-    color: #c6a664;
-    font-size: 0.6em;
+.head {
+  display: flex;
+  align-items: center;
+  background: #2c2c2c;
+  box-shadow: 0px 0px 30px #000000;
+  height: 5em;
+  width: 100%;
+  margin: 0;
+  color: #c6a664;
+  font-size: 0.6em;
 }
-h1{
-    text-align: left;
-    padding-left: 1%;
-    font-size: 2.5em;
+h1 {
+  text-align: left;
+  padding-left: 1%;
+  font-size: 2.5em;
 }
-.menu{
-    box-sizing: border-box;
-    display: flex;
-    padding: 5%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-left: 55%;
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1em;
+  padding-right: 2em;
+  flex-grow: 1;
 }
-.options{
-    text-align: center;
-    margin: 0 15%;
-    padding: 2% 7%;
-    border-radius: 50px;
-    font-size: 0.8em;
-    background: #c6a664;
-    color: #121212;
-    font-family: Montserrat;
-    font-weight: 600;
-    border: none;
-    box-shadow: 0px 0px 30px #000000;
+
+.options {
+  text-align: center;
+  padding: 0.5em 1.5em;
+  border-radius: 50px;
+  font-size: 0.8em;
+  background: #c6a664;
+  color: #121212;
+  font-family: Montserrat;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0px 0px 30px #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5em;
 }
-.options:hover{
-    box-shadow: none;
-    background: #c6a664;
-    cursor: pointer;
+
+.options:hover {
+  box-shadow: none;
+  background: #c6a664;
+  cursor: pointer;
 }
-.Logo{
-    width: 28%;
-    height: 18%;
+
+.icon-button {
+  width: 2.5em;
+  height: 2.5em;
+  padding: 0;
 }
-.bienvenida{
-    text-align: center;
-    color: #c6a664;
-    font-family: Montserrat;
+
+.Logo {
+  width: 28%;
+  height: 18%;
 }
-.eslogan{
-    font-size: 1.1em;
-    margin-top: -5%;
-    margin-bottom: -1%;
-    font-weight:bold
+.bienvenida {
+  text-align: center;
+  color: #c6a664;
+  font-family: Montserrat;
 }
-.sesion{
-    margin-top: 2%;
-    padding: 0.5% 4%;
-    border-radius: 30px;
-    font-size: 0.8em;
-    background: #2c2c2c;
-    color: #ffffff;
+.eslogan {
+  font-size: 1.1em;
+  margin-top: -5%;
+  margin-bottom: -1%;
+  font-weight: bold;
 }
-.sesion:hover{
-    background: #000000;
-    cursor: pointer;
+.sesion {
+  margin-top: 2%;
+  padding: 0.5% 4%;
+  border-radius: 30px;
+  font-size: 0.8em;
+  background: #2c2c2c;
+  color: #ffffff;
 }
-.text{
-    margin-top: 0.5%;
-    font-size: 0.5em;
-    color: #121212;
+.sesion:hover {
+  background: #000000;
+  cursor: pointer;
 }
-a{
-    font-weight: bold;
-    text-decoration: underline;
-    color: #c6a664;
+.text {
+  margin-top: 0.5%;
+  font-size: 0.5em;
+  color: #121212;
 }
-a:hover{
-    color: #c6a664;
-    cursor: pointer;
+a {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #c6a664;
+}
+a:hover {
+  color: #c6a664;
+  cursor: pointer;
 }
 .redes {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20%;
-    height: 1em; /* altura pequeña al inicio */
-    background-color: #2c2c2c;
-    color: #ffffff;
-    font-family: Montserrat;
-    text-align: center;
-    border-radius: 25px 25px 0 0; /* bordes redondeados arriba */
-    overflow: hidden;
-    transition: height 0.5s ease;
-    cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20%;
+  height: 1em; /* altura pequeña al inicio */
+  background-color: #2c2c2c;
+  color: #ffffff;
+  font-family: Montserrat;
+  text-align: center;
+  border-radius: 25px 25px 0 0; /* bordes redondeados arriba */
+  overflow: hidden;
+  transition: height 0.5s ease;
+  cursor: pointer;
 }
 .redes:hover {
-    height: 2.5em;
+  height: 2.5em;
 }
 .redes_text {
-    padding-top: 0.5em;
-    margin: 0;
-    font-size: 0.5em;
+  padding-top: 0.5em;
+  margin: 0;
+  font-size: 0.5em;
 }
 .botones_redes {
-    opacity: 0;
-    margin-top: 0;
-    transition: opacity 0.5s ease;
+  opacity: 0;
+  margin-top: 0;
+  transition: opacity 0.5s ease;
 }
-.botones{
-    width: 50px;
-    height: 50px;
-    margin: 7px 4px;
-    background: none;
-    border: none;
+.botones {
+  width: 50px;
+  height: 50px;
+  margin: 7px 4px;
+  background: none;
+  border: none;
 }
-.botones img{
-    width: 100%;
-    height: auto;
+.botones img {
+  width: 100%;
+  height: auto;
 }
-.botones:hover{
-    background: #c6a664;
-    cursor: pointer;
+.botones:hover {
+  background: #c6a664;
+  cursor: pointer;
 }
 .redes:hover .botones_redes {
-    opacity: 1;
+  opacity: 1;
 }
 .pagina-inicio {
   min-height: 100vh;
   width: 100%;
-  background-image: url('/Fondo.jpeg');
+  background-image: url("/Fondo.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

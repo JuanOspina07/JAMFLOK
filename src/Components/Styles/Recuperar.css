@@ -1,0 +1,104 @@
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(Images/FONDO2.jpg);
+    background-size: cover; 
+    background-position: center;    
+    background-repeat: no-repeat;
+    margin: 0;
+    font-size: 32px;
+    width: 100%;
+    height: 100vh;
+    color: #ffffff;
+    font-family: Montserrat;
+}
+.recuperar_box{
+    text-align: center;
+    margin: auto;
+    border-radius: 30px;
+    background: #2c2c2c;
+    width: 40%;
+    height: 75%;
+    margin-bottom: 0;
+    box-shadow: 0px 0px 30px #000000;
+
+}
+.Logo{
+    width: 120px;
+    height: 120px;
+    margin-top: 5%;
+    margin-bottom: 0;
+}
+.subtitulo{
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #c6a664;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.text{
+    margin-top:2%;
+    font-size: 0.45em;
+}
+.correo{
+    margin-top: 9%;
+    font-size: 0.6em;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.area{
+    background-color: #ffffff;
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 50px;
+    color:#000000;
+    margin-bottom: 0;
+    text-align: center;
+}
+.area:hover{
+    background-color: #d3cfcf;
+}
+.boton{
+    border: none;
+    font-size: 0.7em;
+    margin-top: 5%;
+    border-radius: 30px;
+    background: #c6a664;
+    color: #2c2c2c;
+    font-weight: bold;
+    padding: 1% 6%;
+    box-shadow: 0px 0px 10px #000000;
+}
+.boton:hover{
+    background: #9c762a;
+    box-shadow: none;
+    cursor: pointer;
+}
+.pie{
+    margin-top: 10%;
+}
+.links{
+    font-size: 0.38em;
+    padding: 0 3%;
+    color: #c6a664;
+    text-decoration: none;
+}
+.links:hover{
+    color: #deac46;
+    font-size: 0.5em;
+    cursor: pointer;
+    font-weight: bold;
+}
+.regresar{
+    margin-right: 10%;
+    width: 10%;
+    height: 10%;
+    background: none;
+    border: none;
+}
+.regresar img{
+    width: 100%;
+    height: auto;
+}
