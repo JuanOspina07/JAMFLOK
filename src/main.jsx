@@ -2,12 +2,17 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
-import PaginaInicio from './Components/Shared/PaginaInicio.jsx'
+import App from './Components/Shared/App'
+
+
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <PaginaInicio />
+    <App/>
+    
+      
     </BrowserRouter>
   </StrictMode>,
 )
