@@ -19,6 +19,9 @@ const handleClick = () => {
 const handleRegister = () => {
   navigate("/Register"); // Esto redirige a la ruta del login
 };
+const handleSoporte = () => {
+  navigate("/Soporte"); // Esto redirige a la ruta del login
+};
 
 
   const handleCliente = () => {
@@ -33,7 +36,7 @@ const handleRegister = () => {
         <h1 className="tittle">JAMFLOK</h1>
         <div className="menu">
           <button className="options">Inicio</button>
-          <button className="options">Soporte</button>
+          <button className="options" onClick={handleSoporte}>Soporte</button>
           <button className="options">Información</button>
           <button className="options icon-button" onClick={handleCliente}>
             <AccountCircleIcon style={{ fontSize: 28 }} />
@@ -49,12 +52,7 @@ const handleRegister = () => {
         <p className="text">
           ¿No tienes una cuenta?{" "}
           <a
-            href="instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
             onClick={handleRegister}
-            className="link"
-            style={{ cursor: "pointer" }}
           >
             crea una aquí
           </a>

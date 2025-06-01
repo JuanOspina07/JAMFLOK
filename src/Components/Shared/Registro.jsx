@@ -137,6 +137,8 @@ function Registro () {
   };
   
 
+  const handleSoporte = () => {
+  navigate("/Soporte");}
 
 
   return (
@@ -144,8 +146,8 @@ function Registro () {
       <header className="header">
         <div className="logo">JAMFLOK</div>
         <nav className="nav">
-          <button>Inicio</button>
-          <button>Soporte</button>
+          <button onClick={() => navigate('/')}>Inicio</button>
+          <button onClick={handleSoporte}>Soporte</button>
           <button>Información</button>
         </nav>
       </header>

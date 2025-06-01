@@ -1,14 +1,20 @@
 import React from "react";
-import "../Styles/Login.css"; // Asegúrate de que la ruta sea correcta
+import "../Styles/Login.css"; 
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
+  const navigate = useNavigate();
+  const handleSoporte = () => {
+  navigate("/Soporte"); 
+};
   return (
     <div className="login-page">
       <header className="header">
         <div className="logo">JAMFLOK</div>
         <nav className="nav">
-          <button>Inicio</button>
-          <button>Soporte</button>
+          <button  onClick={() => navigate('/')}>Inicio</button>
+          <button onClick={handleSoporte}>Soporte</button>
           <button>Información</button>
         </nav>
       </header>
