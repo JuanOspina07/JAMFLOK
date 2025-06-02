@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "../Styles/Soporte.css";
 import Carrito from './Carrito';
 import { useNavigate } from 'react-router-dom';
+import TopBar from './TopBar';
 
 const preguntasCompradores = [
   {
@@ -79,33 +80,11 @@ const Soporte = () => {
       ))}
     </div>
   );
+  
 
   return (
     <div className="soporte-container">
-      <header className="main-header">
-        <h1 className="main-logo">JAMFLOK</h1>
-        <nav className="main-nav">
-          <button 
-            className="nav-button" 
-            onClick={() => navigate('/')}
-          >
-            Inicio
-          </button>
-          <button 
-            className="nav-button active" 
-            onClick={() => navigate('/soporte')}
-          >
-            Soporte
-          </button>
-          <button 
-            className="nav-button"
-            onMouseEnter={() => setMostrarCarrito(true)}
-            onMouseLeave={() => setMostrarCarrito(false)}
-          >
-            Carrito
-          </button>
-        </nav>
-      </header>
+        <TopBar />
 
       {mostrarCarrito && (
         <div 

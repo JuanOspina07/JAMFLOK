@@ -1,42 +1,41 @@
 import React, { useState, useEffect } from "react";
-import {
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
-  IconButton,
-  Button,
-} from "@mui/material";
+import { IconButton, Button, FormControlLabel, Checkbox } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-const categoriasEjemplo = [
-  "Ropa",
-  "Calzado",
-  "Accesorios",
-  "Electrónica",
-  "Hogar",
-  "Deportes",
-];
-
-const FiltroCategorias = ({ isOpen, onClose, onFilter }) => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
+const FiltroCategorias = ({ isOpen, onClose, personajes, onFilter }) => {
+  const [especies, setEspecies] = useState([]);
+  const [especiesSeleccionadas, setEspeciesSeleccionadas] = useState([]);
   const [showToast, setShowToast] = useState(false);
+
+  useEffect(() => {
+    const especiesUnicas = [
+      ...new Set(personajes.map((p) => p.species).filter(Boolean)),
+    ];
+    setEspecies(especiesUnicas);
+  }, [personajes]);
 
   if (!isOpen) return null;
 
-  const handleCheckboxChange = (e) => {
-    const { name, checked } = e.target;
-    setSelectedCategories((prev) =>
-      checked ? [...prev, name] : prev.filter((cat) => cat !== name)
-    );
+  const handleCheckboxChange = (especie) => {
+    if (especiesSeleccionadas.includes(especie)) {
+      setEspeciesSeleccionadas(
+        especiesSeleccionadas.filter((e) => e !== especie)
+      );
+    } else {
+      setEspeciesSeleccionadas([...especiesSeleccionadas, especie]);
+    }
   };
 
   const handleApplyFilter = () => {
-    onFilter(selectedCategories);
-    setShowToast(true);  // Mostrar toast
+    const filtrados = personajes.filter((p) =>
+      especiesSeleccionadas.includes(p.species)
+    );
+    onFilter(filtrados);
+    setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
       onClose();
-    }, 3000); // Ocultar toast y cerrar modal después de 3 segundos
+    }, 2000);
   };
 
   return (
@@ -52,23 +51,26 @@ const FiltroCategorias = ({ isOpen, onClose, onFilter }) => {
             <CloseIcon fontSize="inherit" />
           </IconButton>
 
-          <h2>Filtrar por Categoría</h2>
+          <h2>Filtrar por especie</h2>
 
-          <FormGroup>
-            {categoriasEjemplo.map((categoria) => (
+          <div
+            style={{ maxHeight: "300px", overflowY: "auto", marginBottom: 16 }}
+          >
+            {especies.map((especie) => (
               <FormControlLabel
-                key={categoria}
+                key={especie}
                 control={
                   <Checkbox
-                    name={categoria}
-                    checked={selectedCategories.includes(categoria)}
-                    onChange={handleCheckboxChange}
+                    checked={especiesSeleccionadas.includes(especie)}
+                    onChange={() => handleCheckboxChange(especie)}
+                    color="primary"
                   />
                 }
-                label={categoria}
+                label={especie}
+                sx={{ color: "black" }}
               />
             ))}
-          </FormGroup>
+          </div>
 
           <div style={{ marginTop: 16, textAlign: "right" }}>
             <Button
@@ -82,11 +84,7 @@ const FiltroCategorias = ({ isOpen, onClose, onFilter }) => {
         </div>
       </div>
 
-      {showToast && (
-        <div style={styles.toast}>
-          Filtrado con éxito 
-        </div>
-      )}
+      {showToast && <div style={styles.toast}>Filtrado con éxito</div>}
     </>
   );
 };

@@ -27,16 +27,20 @@ const ModalBusqueda = ({ isOpen, onClose, onSearch }) => {
         >
           <CloseIcon fontSize="inherit" />
         </IconButton>
-        <h2>Buscar en la plataforma</h2>
+        <h2>Buscar por Nombre</h2>
         <form onSubmit={handleSubmit}>
           <TextField
+            className="busquedainput"
             name="search"
             placeholder="Escribe tu búsqueda..."
             variant="outlined"
             fullWidth
             autoFocus
+            sx = {{
+              mt: 4,
+            }}
           />
-          <div style={{ marginTop: 16, textAlign: "right" }}>
+          <div style={{ marginTop: 1, textAlign: "right" }}>
             <button type="submit" style={styles.buttonPrimary}>
               Buscar
             </button>
@@ -88,10 +92,15 @@ const styles = {
     color: "white",
     border: "none",
     padding: "8px 20px",
-    borderRadius: 4,
+    borderRadius: 6,
     cursor: "pointer",
     fontSize: 16,
   },
+  busquedainput: {
+    width: "100%",
+    marginBottom: "1em",
+  },
+  
 };
 
 export default ModalBusqueda;

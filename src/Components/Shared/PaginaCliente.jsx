@@ -1,37 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Styles/PaginaCliente.css";
 import { useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import TuneIcon from "@mui/icons-material/Tune";
-import Tooltip from "@mui/material/Tooltip";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import Tooltip from "@mui/material/Tooltip";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
 import ModalBusqueda from "./ModalBusqueda";
 import FiltroCategorias from "./FiltroCategorias";
 
 const PaginaCliente = () => {
-  const userName = "Juan Pérez";
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalFiltroAbierto, setModalFiltroAbierto] = useState(false);
+  const [personajes, setPersonajes] = useState([]);
+  const [personajesFiltrados, setPersonajesFiltrados] = useState([]);
 
-  const compras = [
-    {
-      id: 1,
-      producto: "Camiseta Oversize",
-      fecha: "2025-04-12",
-      total: "$45.000",
-    },
-    {
-      id: 2,
-      producto: "Pantalón Cargo",
-      fecha: "2025-03-30",
-      total: "$78.000",
-    },
-    { id: 3, producto: "Gorra Negra", fecha: "2025-02-21", total: "$25.000" },
-  ];
+  useEffect(() => {
+    fetch("https://rickandmortyapi.com/api/character")
+      .then((response) => response.json())
+      .then((data) => {
+        setPersonajes(data.results);
+        setPersonajesFiltrados(data.results);
+      })
+      .catch((error) =>
+        console.error("Error al obtener los personajes:", error)
+      );
+  }, []);
 
   const handleSearch = (query) => {
-    alert(`Buscando: "${query}"`);
+    const filtrados = personajes.filter((personaje) =>
+      personaje.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setPersonajesFiltrados(filtrados);
+    setModalOpen(false);
   };
 
   return (
@@ -41,13 +51,11 @@ const PaginaCliente = () => {
           <KeyboardBackspaceIcon fontSize="large" />
         </button>
       </Tooltip>
-
       <Tooltip title="Consultar">
         <button className="btn-search" onClick={() => setModalOpen(true)}>
           <SearchIcon fontSize="large" />
         </button>
       </Tooltip>
-
       <Tooltip title="Filtrar">
         <button
           className="btn-filter"
@@ -57,49 +65,66 @@ const PaginaCliente = () => {
         </button>
       </Tooltip>
 
-      <div className="cliente-contenedor">
-        <h1>Hola, {userName}</h1>
-
-        <div className="perfil">
-          <p>
-            <strong>📧 Correo:</strong> juanperez@email.com
-          </p>
-          <p>
-            <strong>🏠 Dirección:</strong> Cra 12 #45-67, Bogotá
-          </p>
-          <p>
-            <strong>📞 Teléfono:</strong> +57 300 123 4567
-          </p>
-        </div>
-
-        <div className="compras">
-          <h2>🛍️ Tus Compras</h2>
-          <ul>
-            {compras.map((item) => (
-              <li key={item.id}>
-                <span>{item.producto}</span>
-                <span>{item.fecha}</span>
-                <span>{item.total}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <ModalBusqueda
-          isOpen={modalOpen}
-          onClose={() => setModalOpen(false)}
-          onSearch={handleSearch}
-        />
-
-        <FiltroCategorias
-          isOpen={modalFiltroAbierto}
-          onClose={() => setModalFiltroAbierto(false)}
-          onFilter={(categoriasSeleccionadas) => {
-            console.log("Filtrado con categorías:", categoriasSeleccionadas);
-            
-          }}
-        />
+      <div className="table-wrapper">
+        <TableContainer component={Paper} className="table-container">
+          <Table size="medium" aria-label="tabla de personajes">
+            <TableHead>
+              <TableRow className="table-head">
+                <TableCell>
+                  <strong>Imagen</strong>
+                </TableCell>
+                <TableCell>
+                  <strong>Nombre</strong>
+                </TableCell>
+                <TableCell>
+                  <strong>Estado</strong>
+                </TableCell>
+                <TableCell>
+                  <strong>Especie</strong>
+                </TableCell>
+                <TableCell>
+                  <strong>Origen</strong>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {personajesFiltrados.map((personaje) => (
+                <TableRow key={personaje.id}>
+                  <TableCell>
+                    <img
+                      src={personaje.image}
+                      alt={personaje.name}
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                    />
+                  </TableCell>
+                  <TableCell>{personaje.name}</TableCell>
+                  <TableCell>{personaje.status}</TableCell>
+                  <TableCell>{personaje.species}</TableCell>
+                  <TableCell>{personaje.origin.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
+
+      <ModalBusqueda
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onSearch={handleSearch}
+      />
+      <FiltroCategorias
+        isOpen={modalFiltroAbierto}
+        onClose={() => setModalFiltroAbierto(false)}
+        personajes={personajes}
+        onFilter={(personajesFiltrados) => {
+          setPersonajesFiltrados(personajesFiltrados);
+        }}
+      />
     </div>
   );
 };
