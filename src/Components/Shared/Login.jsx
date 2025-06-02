@@ -49,7 +49,7 @@ const Login = () => {
             navigate("/PaginaAdmin");
             break;
           default:
-            setError("Rol no reconocido");
+            setError("Rol no reconocid");
             return;
         }
       } else {
