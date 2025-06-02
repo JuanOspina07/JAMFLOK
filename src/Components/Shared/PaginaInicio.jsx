@@ -22,7 +22,9 @@ const handleRegister = () => {
 const handleSoporte = () => {
   navigate("/Soporte"); // Esto redirige a la ruta del login
 };
-
+ const handleFormulario = () => {
+        navigate("/Formulario");
+    }
 
   const handleCliente = () => {
     navigate("/cliente");
@@ -37,7 +39,7 @@ const handleSoporte = () => {
         <div className="menu">
           <button className="options">Inicio</button>
           <button className="options" onClick={handleSoporte}>Soporte</button>
-          <button className="options">Información</button>
+          <button className="options" onClick={handleFormulario}>Información</button> 
           <button className="options icon-button" onClick={handleCliente}>
             <AccountCircleIcon style={{ fontSize: 28 }} />
           </button>

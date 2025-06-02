@@ -5,7 +5,7 @@ import Login from './Components/Shared/Login';
 import Soporte from './Components/Shared/Soporte';
 import Register from './Components/Shared/Registro';
 import Recuperar from './Components/Shared/Recuperar';
-
+import Formulario from './Components/Shared/Formulario'; 
 function App() {
   return (
     <Routes>
@@ -15,6 +15,7 @@ function App() {
        <Route path="/Soporte" element={<Soporte />} />
        <Route path="/Register" element={<Register />} />
        <Route path="/Recuperar" element={<Recuperar />} />
+       <Route path="/Formulario" element={<Formulario/>}/>
     </Routes>
   );
 }
