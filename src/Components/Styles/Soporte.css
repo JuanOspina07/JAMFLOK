@@ -7,11 +7,11 @@
   font-family: 'Montserrat', sans-serif;
   color: #121212;
   position: relative;
-  background-attachment: fixed; /* Esto ayuda a que la imagen cubra toda la pantalla */
+  background-attachment: fixed;
 }
 
 .soporte-container::before {
-  display: none; /* Esto elimina completamente la capa blanca */
+  display: none; 
 }
 
 .header {
@@ -256,13 +256,7 @@
 
 .nav-button.active {
   font-weight: 600;
-  background-color: #B59554; /*
-  border-color: #B59554;
-  color: white;
-}
-
-.nav-button.active::after {
-  content: none; /* línea joda*/
+  background-color: #B59554; 
 }
 
 

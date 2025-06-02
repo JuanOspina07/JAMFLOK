@@ -110,8 +110,8 @@ a:hover {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 20%;
-  height: 1em; /* altura pequeña al inicio */
+  width: 30%;
+  height: 1.5em; /* altura pequeña al inicio */
   background-color: #2c2c2c;
   color: #ffffff;
   font-family: Montserrat;
@@ -122,7 +122,7 @@ a:hover {
   cursor: pointer;
 }
 .redes:hover {
-  height: 2.5em;
+  height: 3.5em;
 }
 .redes_text {
   padding-top: 0.5em;
@@ -135,8 +135,8 @@ a:hover {
   transition: opacity 0.5s ease;
 }
 .botones {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   margin: 7px 4px;
   background: none;
   border: none;

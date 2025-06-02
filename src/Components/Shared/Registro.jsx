@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Swal from 'sweetalert2';
+import TopBar from "./TopBar";
 
 
 import "../Styles/Registro.css"; // Asegúrate de que la ruta sea correcta
@@ -159,14 +160,7 @@ function Registro () {
 
   return (
     <div className="login-page">
-      <header className="header">
-        <div className="logo">JAMFLOK</div>
-        <nav className="nav">
-          <button onClick={() => navigate('/')}>Inicio</button>
-          <button onClick={handleSoporte}>Soporte</button>
-          <button>Información</button>
-        </nav>
-      </header>
+      <TopBar/>
 
       <main className="Register-container">
         <div className="Register-box">
