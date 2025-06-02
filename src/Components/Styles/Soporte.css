@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
 
 .soporte-container {
   min-height: 100vh;
-  background-image: url('/Fondo.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -25,13 +23,7 @@
   z-index: 1;
 }
 
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-weight: bold;
-  font-size: 2.5rem;
-  color: #C6A664;
-  margin: 0;
-}
+
 
 .nav-links {
   display: flex;
@@ -130,6 +122,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #2C2C2C;
 }
 
 .pregunta:hover {

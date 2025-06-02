@@ -129,33 +129,7 @@ input[type=number] {
   font-weight: 600;
   font-size: 14px;
 }
-.floating-label {
-  position: absolute;
-  left: 14px;
-  top: 14px;
-  color: #C6A664;
-  font-weight: 600;
-  font-size: 15px;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  background-color: #2e2e2e; /* Igual que el fondo del input */
-  padding: 0 6px;
-  border-radius: 5px;
-}
 
-/* Cuando el input está enfocado o tiene texto */
-.inputfield2:focus + .floating-label,
-.inputfield2:not(:placeholder-shown) + .floating-label {
-  top: -10px;
-  left: 10px;
-  font-size: 12px;
-  color: #b89d4f;
-}
-
-/* input sin placeholder para que funcione la condición :placeholder-shown */
-.inputfield2::placeholder {
-  color: transparent;
-}
 
 .inputfield2 {
   width: 100%; /* Usamos 100% y controlamos el ancho desde el contenedor */

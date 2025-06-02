@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../styles/Soporte.css";
+import "../Styles/Soporte.css";
 import Carrito from './Carrito';
 import { useNavigate } from 'react-router-dom';
 
@@ -82,7 +82,6 @@ const Soporte = () => {
 
   return (
     <div className="soporte-container">
-      {/* Encabezado */}
       <header className="main-header">
         <h1 className="main-logo">JAMFLOK</h1>
         <nav className="main-nav">
