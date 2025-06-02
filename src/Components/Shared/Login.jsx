@@ -2,6 +2,7 @@ import "../Styles/Login.css";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
+import TopBar from "./TopBar";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Login = () => {
         switch (idRol) {
           case 1:
             console.log("voy donde el cliente");
-            navigate("/menu");
+            navigate("/cliente");
             break;
           case 2:
             console.log("voy donde el administrador");
@@ -63,14 +64,7 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      <header className="header">
-        <div className="logo">JAMFLOK</div>
-        <nav className="nav">
-          <button onClick={() => navigate('/')}>Inicio</button>
-          <button onClick={handleSoporte}>Soporte</button>
-          <button>Información</button>
-        </nav>
-      </header>
+      <TopBar />
 
       <main className="login-container">
         <div className="login-box">
