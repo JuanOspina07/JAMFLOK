@@ -1,0 +1,48 @@
+.head{
+    align-items: center;
+    background: #2c2c2c;
+    box-shadow: 0px 0px 30px #000000;
+    width: 8%;
+    height: 100vh;
+    margin: 0;
+    font-size: 0.6em;
+}
+.Logo{
+    margin-top: 10%;
+    width: 100%;
+}
+.opciones{
+    margin-top: 55vh;
+}
+.button_inicio{
+    border: none;
+    background: none;
+}
+.imagen1{
+    width: 75%;
+}
+.imagen2{
+    width: 40%;
+}
+.imagen1:hover,.imagen2:hover{
+    filter: drop-shadow(0px 0px 10px #000000);
+}
+h1{
+    text-align: center;
+    margin-left: 10%;
+    margin-top: -42%;
+    font-size: 2em;
+    font-weight:bold
+}
+.regresar_box{
+    margin-left: 7%;
+    margin-top: 30.5%;
+}
+.regresar{
+    border: none;
+    background: none;
+    width: 12%;
+}
+.regresar img{
+    width: 100%;
+}
