@@ -110,3 +110,8 @@ body, html {
 .sign-in:hover {
   background-color: #C6A664;
 }
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}

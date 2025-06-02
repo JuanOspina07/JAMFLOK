@@ -1,11 +1,13 @@
 
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Swal from 'sweetalert2';
+
 
 import "../Styles/Registro.css"; // Asegúrate de que la ruta sea correcta
 
 function Registro () {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [paises, setPaises] = useState([]);
   const [selectedPais, setSelectedPais] = useState("");
   const [departamentos, setDepartamentos] = useState([]);
@@ -25,6 +27,8 @@ function Registro () {
   const [selectedCiudad, setSelectedCiudad] = useState("");
   const [celular, setCelular] = useState("");
   const [fechaNacimiento, setFechaNacimiento] = useState("");
+  const[role, setRole] = useState([]); 
+  const[selecRoles,setSelectRol]= useState("");
  useEffect(() => {
     fetch("http://localhost:4000/api/paises")
       .then((response) => response.json())
@@ -74,6 +78,17 @@ function Registro () {
       })
       .catch((error) => console.error("Error al obtener los tipos de documento:", error));
   }, []);
+   useEffect(() => {
+    fetch("http://localhost:4000/api/rol")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Tipos de Roles recibidos:", data);
+        setRole(data);
+      })
+      .catch((error) => console.error("Error al obtener los Roles:", error));
+  }, []);
+
+
   
   
 
@@ -104,6 +119,7 @@ function Registro () {
       idCiudad: Number(selectedCiudad),
       celular,
       fechaNacimiento,
+      rol: Number(selecRoles),
     };
   
     try {
@@ -154,7 +170,7 @@ function Registro () {
 
       <main className="Register-container">
         <div className="Register-box">
-          <h2>Register</h2>
+          <h2>REGISTER</h2>
           <div className="UserBox2">
             <input type="text" value={primerNombre} onChange={(e) => setPrimerNombre(e.target.value)} required className="inputfield2" />
             <label className="label2">Primer Nombre</label>
@@ -182,7 +198,7 @@ function Registro () {
           </div>
           <div className="UserBox2">
             <input type="date" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} required className="inputfield2" />
-            <label className="label2"></label>
+            <label className="label2">Fecha de Nacimiento</label>
           </div>
           <div className="UserBox2">
               <select
@@ -193,12 +209,12 @@ function Registro () {
               >
                 <option value="">Seleccione un tipo de documento</option>
                 {tiposDocumento.map((tipo) => (
-                  <option key={tipo.idTipoDocumento} value={tipo.idTipoDocumento}>
+                  <option key={tipo.ID_TIPO_DOCUMENTO} value={tipo.ID_TIPO_DOCUMENTO}>
                     {tipo.Nombre}
                   </option>
                 ))}
               </select>
-              <label className="label2"></label>
+              <label className="label2">Tipo de Documento</label>
             </div>
           <div className="UserBox2">
             <input type="number" value={numeroDocumento} onChange={(e) => setNumeroDocumento(e.target.value)} required className="inputfield2" />
@@ -208,7 +224,6 @@ function Registro () {
             <input type="tel" value={celular} onChange={(e) => setCelular(e.target.value)}  required className="inputfield2" />
             <label className="label2">Celular</label>
           </div>
-          {/* 📌 Select para elegir país */}
           <div className="UserBox2">
               <select
                 required
@@ -218,12 +233,12 @@ function Registro () {
               >
                 <option value="">Seleccione un país</option>
                 {paises.map((pais) => (
-                  <option key={pais.idPais} value={pais.idPais}>
+                  <option key={pais.ID_PAIS} value={pais.ID_PAIS}>
                     {pais.Nombre} {/* Muestra el nombre pero envía el ID */}
                   </option>
                 ))}
               </select>
-              <label className="label2"></label>
+              <label className="label2">País</label>
           </div>
 
          {/* elegir departamento */}
@@ -236,12 +251,12 @@ function Registro () {
             >
               <option value="">Seleccione un departamento</option>
               {departamentos.map((depto) => (
-                <option key={depto.idDepartamento} value={depto.idDepartamento}>
+                <option key={depto.ID_DEPARTAMENTO} value={depto.ID_DEPARTAMENTO}>
                   {depto.Nombre}
                 </option>
               ))}
             </select>
-            <label className="label2"></label>
+            <label className="label2">Departamento</label>
           </div>
 
           {/* elegir ciudad */}
@@ -254,13 +269,29 @@ function Registro () {
             >
               <option value="">Seleccione una ciudad</option>
               {ciudades.map((ciudad) => (
-                <option key={ciudad.idCiudad} value={ciudad.idCiudad}>
+                <option key={ciudad.ID_CIUDAD} value={ciudad.ID_CIUDAD}>
                   {ciudad.Nombre}
                 </option>
               ))}
             </select>
-            <label className="label2"></label>
+            <label className="label2">Ciudad</label>
           </div>
+          <div className="UserBox2">
+              <select
+                required
+                className="inputfield2"
+                value={selecRoles}
+                onChange={(e) => setSelectRol(e.target.value)}
+              >
+                <option value="">Seleccione el Rol que deseas</option>
+                {role.map((roles) => (
+                  <option key={roles.ID_ROL} value={roles.ID_ROL}>
+                    {roles.Nombre}
+                  </option>
+                ))}
+              </select>
+              <label className="label2">Rol</label>
+            </div>
           <div className="UserBox2">
             <input type="text" value={nombreUsuario} onChange={(e) => setNombreUsuario(e.target.value)} required className="inputfield2" />
             <label className="label2">UserName</label>
@@ -273,7 +304,7 @@ function Registro () {
             <input type="password" value={contraseña} onChange={(e) => setContraseña(e.target.value)} required className="inputfield2" />
             <label className="label2">Password</label>
           </div>
-          <button className="btresg" type="submit">Register</button>
+          <button className="btresg" type="submit" onClick={handleRegister}>Register</button>
         </div>
       </main>
     </div>
