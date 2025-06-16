@@ -38,11 +38,11 @@ export const PaginaInicio = () => {
 
       <div className="bienvenida">
         <img className="Logo" src={logo} alt="" />
-        <p className="eslogan">Vende fácil, compra mejor.</p>
+        <p className="eslogan"> Todo lo que quieres, donde lo quieres.</p>
         <button className="sesion" onClick={handleClick}>
           Iniciar sesión
         </button>
-        <p className="text">
+        <p className="text777">
           ¿No tienes una cuenta? <a onClick={handleRegister}>crea una aquí</a>
         </p>
       </div>

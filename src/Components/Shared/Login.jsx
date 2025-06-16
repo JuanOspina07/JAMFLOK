@@ -42,12 +42,10 @@ const Login = () => {
         // Redirigir según el rol
         switch (idRol) {
           case 1:
-            console.log("voy donde el cliente");
-            navigate("/cliente");
+            navigate("/emprendedor");
             break;
           case 2:
-            console.log("voy donde el administrador");
-            navigate("/PaginaAdmin");
+            navigate("/cliente");
             break;
           default:
             setError("Rol no reconocid");

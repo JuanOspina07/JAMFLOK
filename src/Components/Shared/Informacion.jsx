@@ -2,29 +2,17 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/Informacion.css"; // Ajusta si la ruta cambia
 import logo from "../../../public/Logo.png";
+import TopBar from "./TopBar"; 
 
-const Recuperar = () => {
-  const navigate = useNavigate();
-
-  const handleEnviar = () => {
-    // Aquí podrías validar o mandar un correo
-    alert("Correo enviado (simulado)");
-  };
+const Informacion = () => {
 
   return (
     <div>
-      <div className="head">
-        <h1 className="tittle">JAMFLOK</h1>
-        <div className="menu">
-          <button className="options">Inicio</button>
-          <button className="options">Soporte</button>
-          <button className="options">Información</button>
-        </div>
-      </div>
-
+      <TopBar />
+      <div className="cont">
       <div className="informacion">
         <div className="box_logo">
-          <img src={logo} alt="Logo" className="Logo" />
+          <img src={logo} alt="Logo" className="Logo7" />
         </div>
 
         <h2>Nuestra Empresa</h2>
@@ -58,6 +46,7 @@ const Recuperar = () => {
           Nos comprometemos a mantener una plataforma que evoluciona junto con las necesidades de nuestros usuarios.
         </p>
       </div>
+    </div>
     </div>
     );
   };

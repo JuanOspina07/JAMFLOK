@@ -15,7 +15,7 @@ const Recuperar = () => {
   };
 
   return (
-    <div>
+    <div className="containerRecuperar">
       <div className="espacio"></div>
       <div className="recuperar_box">
         <img src={logo} alt="Logo" className="Logo" />

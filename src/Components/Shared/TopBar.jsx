@@ -5,9 +5,8 @@ import "../Styles/Soporte.css";
 const TopBar = () => {
   const navigate = useNavigate();
 
-  const handleCliente = () => {
-    navigate("/cliente");
-    console.log("voy donde el cliente");
+  const handleInformacion = () => {
+    navigate("/informacion");
   };
 
   return (
@@ -23,6 +22,12 @@ const TopBar = () => {
             onClick={() => navigate("/soporte")}
           >
             Soporte
+          </button>
+           <button
+            className="nav-button active"
+            onClick={handleInformacion}
+          >
+            Información
           </button>
         </nav>
       </header>
