@@ -17,6 +17,12 @@ import {
 import ModalBusqueda from "./ModalBusqueda";
 import FiltroCategorias from "./FiltroCategorias";
 
+/////////////////////////////////////////////////
+// Tengo una sensación horrible,pienso      /////
+//  que el tiempo pasa y no consigo nada,   /////
+// y eso me hace estremecerme hasta la raíz /////
+/////////////////////////////////////////////////
+
 const PaginaCliente = () => {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
@@ -25,13 +31,12 @@ const PaginaCliente = () => {
   const [negociosFiltrados, setNegociosFiltrados] = useState([]);
   const [categorias, setCategorias] = useState([]);
 
-useEffect(() => {
-  fetch("http://localhost:4000/api/categorias")
-    .then(res => res.json())
-    .then(data => setCategorias(data))
-    .catch(e => console.error(" Error al cargar categorías:", e));
-}, []);
-
+  useEffect(() => {
+    fetch("http://localhost:4000/api/categorias")
+      .then((res) => res.json())
+      .then((data) => setCategorias(data))
+      .catch((e) => console.error(" Error al cargar categorías:", e));
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:4000/api/negocios")
@@ -64,7 +69,10 @@ useEffect(() => {
         </button>
       </Tooltip>
       <Tooltip title="Filtrar">
-        <button className="btn-filter" onClick={() => setModalFiltroAbierto(true)}>
+        <button
+          className="btn-filter"
+          onClick={() => setModalFiltroAbierto(true)}
+        >
           <TuneIcon fontSize="large" />
         </button>
       </Tooltip>
@@ -73,19 +81,37 @@ useEffect(() => {
         <Table size="medium" aria-label="Tabla de negocios">
           <TableHead>
             <TableRow>
-              <TableCell><strong>Imagen</strong></TableCell>
-              <TableCell><strong>Nombre</strong></TableCell>
-              <TableCell><strong>RUT</strong></TableCell>
-              <TableCell><strong>Descripción</strong></TableCell>
-              <TableCell><strong>Dirección</strong></TableCell>
-              <TableCell><strong>Teléfono</strong></TableCell>
-              <TableCell><strong>Horario</strong></TableCell>
+              <TableCell>
+                <strong>Imagen</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Nombre</strong>
+              </TableCell>
+              <TableCell>
+                <strong>RUT</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Descripción</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Dirección</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Teléfono</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Horario</strong>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {negociosFiltrados.map((n) => (
-              <TableRow key={n.ID_NEGOCIOS} hover style={{ cursor: "pointer" }} onClick={() => navigate(`/ProductoNegocio/${n.ID_NEGOCIOS}`)}>
-
+              <TableRow
+                key={n.ID_NEGOCIOS}
+                hover
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/ProductoNegocio/${n.ID_NEGOCIOS}`)}
+              >
                 <TableCell>
                   <img
                     src={n.Imagen}
@@ -114,16 +140,13 @@ useEffect(() => {
         onClose={() => setModalOpen(false)}
         onSearch={handleSearch}
       />
-    <FiltroCategorias
-  isOpen={modalFiltroAbierto}
-  onClose={() => setModalFiltroAbierto(false)}
-  negocios={negocios}
-  categorias={categorias} 
-  onFilter={(f) => setNegociosFiltrados(f)}
-  
-/>
-
-
+      <FiltroCategorias
+        isOpen={modalFiltroAbierto}
+        onClose={() => setModalFiltroAbierto(false)}
+        negocios={negocios}
+        categorias={categorias}
+        onFilter={(f) => setNegociosFiltrados(f)}
+      />
     </div>
   );
 };
