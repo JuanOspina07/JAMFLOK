@@ -12,13 +12,13 @@ export const PaginaInicio = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/login"); // Esto redirige a la ruta del login
+    navigate("/login"); 
   };
   const handleRegister = () => {
-    navigate("/Register"); // Esto redirige a la ruta del login
+    navigate("/Register"); 
   };
   const handleSoporte = () => {
-    navigate("/Soporte"); // Esto redirige a la ruta del login
+    navigate("/Soporte"); 
   };
   const handleFormulario = () => {
     navigate("/Formulario");

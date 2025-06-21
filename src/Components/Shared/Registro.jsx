@@ -3,16 +3,14 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Swal from 'sweetalert2';
 import TopBar from "./TopBar";
-
-
-import "../Styles/Registro.css"; // Asegúrate de que la ruta sea correcta
+import "../Styles/Registro.css";
 
 function Registro () {
   const navigate = useNavigate();
   const [paises, setPaises] = useState([]);
   const [selectedPais, setSelectedPais] = useState("");
   const [departamentos, setDepartamentos] = useState([]);
-  const [selectedDepartamento, setSelectedDepartamento] = useState(""); // Agregar estado para departamento
+  const [selectedDepartamento, setSelectedDepartamento] = useState(""); 
   const [ciudades, setCiudades] = useState([]);
   const [tiposDocumento, setTiposDocumento] = useState([]);
   const [selectedTipoDocumento, setSelectedTipoDocumento] = useState("");
@@ -40,7 +38,7 @@ function Registro () {
       .catch((error) => console.error("Error al obtener los países:", error));
   }, []);
   
-//Cargar departamentos
+
   useEffect(() => {
     if (selectedPais) {
       fetch(`http://localhost:4000/api/departamentos/${selectedPais}`)
@@ -55,7 +53,7 @@ function Registro () {
     }
   }, [selectedPais]);
 
-  //  Cargar ciudades
+
   useEffect(() => {
     if (selectedDepartamento) {
       fetch(`http://localhost:4000/api/ciudades/${selectedDepartamento}`)
@@ -69,7 +67,6 @@ function Registro () {
     }
   }, [selectedDepartamento]);
 
-  //Cargar tipo documento
   useEffect(() => {
     fetch("http://localhost:4000/api/tipos-documento")
       .then((response) => response.json())
@@ -223,25 +220,24 @@ function Registro () {
                 required
                 className="inputfield2"
                 value={selectedPais}
-                onChange={(e) => setSelectedPais(e.target.value)} // Guardar el id del país
+                onChange={(e) => setSelectedPais(e.target.value)} 
               >
                 <option value="">Seleccione un país</option>
                 {paises.map((pais) => (
                   <option key={pais.ID_PAIS} value={pais.ID_PAIS}>
-                    {pais.Nombre} {/* Muestra el nombre pero envía el ID */}
+                    {pais.Nombre} 
                   </option>
                 ))}
               </select>
               <label className="label2">País</label>
           </div>
 
-         {/* elegir departamento */}
           <div className="UserBox2">
             <select
               required
               className="inputfield2"
-              value={selectedDepartamento} // Vincular el estado al select
-              onChange={(e) => setSelectedDepartamento(e.target.value)} // Actualizar estado al cambiar
+              value={selectedDepartamento} 
+              onChange={(e) => setSelectedDepartamento(e.target.value)} 
             >
               <option value="">Seleccione un departamento</option>
               {departamentos.map((depto) => (
@@ -253,7 +249,6 @@ function Registro () {
             <label className="label2">Departamento</label>
           </div>
 
-          {/* elegir ciudad */}
           <div className="UserBox2">
             <select
               required

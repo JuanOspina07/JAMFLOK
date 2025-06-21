@@ -58,12 +58,12 @@ button:hover {
 }
 .body {
   width: 100%;
-  height: 100vh; /* Para que ocupe toda la pantalla */
+  height: 100vh; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px; /* Añadir padding para espacios en pantallas pequeñas */
+  padding: 20px; 
   box-sizing: border-box;
 }
 
@@ -74,15 +74,14 @@ button:hover {
   border-radius: 20px;
   width: 100%;
   max-width: 420px;
-  max-height: 500px; /* 👈 Limita la altura */
-  overflow-y: auto;  /* 👈 Habilita scroll vertical */
+  max-height: 500px; 
+  overflow-y: auto;  
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   border: 2px solid #b68c3b;
-  scrollbar-width: thin; /* Firefox */
+  scrollbar-width: thin;
   scrollbar-color: #b68c3b transparent;
 }
 
-/* Scrollbar personalizada para Chrome */
 .formulario::-webkit-scrollbar {
   width: 6px;
 }

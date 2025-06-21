@@ -4,14 +4,14 @@ html, body {
   height: 100%;
 }
 
-/* Contenedor general */
+
 .login-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Encabezado */
+
 .header {
   background-color: #1f1f1f;
   color: #C6A664;
@@ -51,7 +51,6 @@ html, body {
   transform: scale(1.05);
 }
 
-/* Contenedor del registro */
 .Register-container {
   padding: 30px;
   display: flex;
@@ -65,8 +64,8 @@ html, body {
   border-radius: 20px;
   width: 60%;
   max-width: 600px;
-  max-height: 65vh; /* Altura máxima del modal */
-  overflow-y: auto;  /* Scroll interno si el contenido excede */
+  max-height: 65vh; 
+  overflow-y: auto;  
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.6s ease-in-out;
 }
@@ -94,12 +93,11 @@ html, body {
   font-weight: bold;
 }
 
-/* Estilo para cada campo */
+
 .UserBox2 {
   margin-bottom: 20px;
 }
 select.inputfield2 {
-  /* Flecha SVG en color dorado (#C6A664) */
   background-image: url("data:image/svg+xml,%3Csvg fill='%23C6A664' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
@@ -107,14 +105,13 @@ select.inputfield2 {
   padding-right: 38px;
   cursor: pointer;
 }
-/* Chrome, Safari, Edge, Opera */
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none;
   margin: 0; 
 }
 
-/* Firefox */
+
 input[type=number] {
   
   appearance: none;
@@ -130,7 +127,7 @@ input[type=number] {
 
 
 .inputfield2 {
-  width: 100%; /* Usamos 100% y controlamos el ancho desde el contenedor */
+  width: 100%; 
   padding: 12px 14px;
   background: #444;
   border: 2px solid transparent;
@@ -139,7 +136,7 @@ input[type=number] {
   font-size: 15px;
   outline: none;
   transition: border 0.3s ease;
-  height: 45px; /* Esto es crucial para uniformar altura */
+  height: 45px;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -153,7 +150,6 @@ input[type=number] {
   border-color: #C6A664;
 }
 
-/* Botón de registro */
 .btresg {
   background-color: #C6A664;
   color: #1f1f1f;
@@ -173,7 +169,6 @@ input[type=number] {
   transform: scale(1.03);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;

@@ -1,4 +1,4 @@
-/* Reset básico */
+
 * {
   margin: 0;
   padding: 0;
@@ -10,12 +10,11 @@ body, html {
   background-color: #e5e5e5;
 }
 
-/* Contenedor general */
+
 .login-page {
   min-height: 100vh;
 }
 
-/* Encabezado */
 .header {
   background-color: #1f1f1f;
   color: #C6A664;
@@ -45,12 +44,11 @@ body, html {
   background-color: #C6A664;
 }
 
-/* Contenedor del login */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 100px); /* Altura total menos la altura del encabezado */
+  height: calc(100vh - 100px);
 
 }
 

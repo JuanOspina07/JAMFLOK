@@ -1,34 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { IconButton, Button, FormControlLabel, Checkbox } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-const FiltroCategorias = ({ isOpen, onClose, personajes, onFilter }) => {
-  const [especies, setEspecies] = useState([]);
-  const [especiesSeleccionadas, setEspeciesSeleccionadas] = useState([]);
+const FiltroCategorias = ({ isOpen, onClose, negocios, categorias = [], onFilter }) => {
+  const [seleccionadas, setSeleccionadas] = useState([]);
   const [showToast, setShowToast] = useState(false);
 
-  useEffect(() => {
-    const especiesUnicas = [
-      ...new Set(personajes.map((p) => p.species).filter(Boolean)),
-    ];
-    setEspecies(especiesUnicas);
-  }, [personajes]);
+  if (!isOpen || !Array.isArray(negocios)) return null;
 
-  if (!isOpen) return null;
-
-  const handleCheckboxChange = (especie) => {
-    if (especiesSeleccionadas.includes(especie)) {
-      setEspeciesSeleccionadas(
-        especiesSeleccionadas.filter((e) => e !== especie)
-      );
+  const handleCheckboxChange = (idCategoria) => {
+    if (seleccionadas.includes(idCategoria)) {
+      setSeleccionadas(seleccionadas.filter((c) => c !== idCategoria));
     } else {
-      setEspeciesSeleccionadas([...especiesSeleccionadas, especie]);
+      setSeleccionadas([...seleccionadas, idCategoria]);
     }
   };
 
   const handleApplyFilter = () => {
-    const filtrados = personajes.filter((p) =>
-      especiesSeleccionadas.includes(p.species)
+    const filtrados = negocios.filter((n) =>
+      seleccionadas.includes(n.ID_CATEGORIA)
     );
     onFilter(filtrados);
     setShowToast(true);
@@ -51,22 +41,20 @@ const FiltroCategorias = ({ isOpen, onClose, personajes, onFilter }) => {
             <CloseIcon fontSize="inherit" />
           </IconButton>
 
-          <h2>Filtrar por especie</h2>
+          <h2>Filtrar por categoría</h2>
 
-          <div
-            style={{ maxHeight: "300px", overflowY: "auto", marginBottom: 16 }}
-          >
-            {especies.map((especie) => (
+          <div style={{ maxHeight: "300px", overflowY: "auto", marginBottom: 16 }}>
+            {categorias.map((cat) => (
               <FormControlLabel
-                key={especie}
+                key={cat.ID_CATEGORIAS}
                 control={
                   <Checkbox
-                    checked={especiesSeleccionadas.includes(especie)}
-                    onChange={() => handleCheckboxChange(especie)}
+                    checked={seleccionadas.includes(cat.ID_CATEGORIAS)}
+                    onChange={() => handleCheckboxChange(cat.ID_CATEGORIAS)}
                     color="primary"
                   />
                 }
-                label={especie}
+                label={cat.NombreCategoria}
                 sx={{ color: "black" }}
               />
             ))}

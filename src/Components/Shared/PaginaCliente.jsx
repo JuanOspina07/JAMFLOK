@@ -21,26 +21,33 @@ const PaginaCliente = () => {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalFiltroAbierto, setModalFiltroAbierto] = useState(false);
-  const [personajes, setPersonajes] = useState([]);
-  const [personajesFiltrados, setPersonajesFiltrados] = useState([]);
+  const [negocios, setNegocios] = useState([]);
+  const [negociosFiltrados, setNegociosFiltrados] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+
+useEffect(() => {
+  fetch("http://localhost:4000/api/categorias")
+    .then(res => res.json())
+    .then(data => setCategorias(data))
+    .catch(e => console.error(" Error al cargar categorías:", e));
+}, []);
+
 
   useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character")
-      .then((response) => response.json())
+    fetch("http://localhost:4000/api/negocios")
+      .then((res) => res.json())
       .then((data) => {
-        setPersonajes(data.results);
-        setPersonajesFiltrados(data.results);
+        setNegocios(data);
+        setNegociosFiltrados(data);
       })
-      .catch((error) =>
-        console.error("Error al obtener los personajes:", error)
-      );
+      .catch((e) => console.error("Error al cargar negocios:", e));
   }, []);
 
   const handleSearch = (query) => {
-    const filtrados = personajes.filter((personaje) =>
-      personaje.name.toLowerCase().includes(query.toLowerCase())
+    const filtrados = negocios.filter((n) =>
+      n.NombreNegocio.toLowerCase().includes(query.toLowerCase())
     );
-    setPersonajesFiltrados(filtrados);
+    setNegociosFiltrados(filtrados);
     setModalOpen(false);
   };
 
@@ -51,80 +58,72 @@ const PaginaCliente = () => {
           <KeyboardBackspaceIcon fontSize="large" />
         </button>
       </Tooltip>
-      <Tooltip title="Consultar">
+      <Tooltip title="Buscar">
         <button className="btn-search" onClick={() => setModalOpen(true)}>
           <SearchIcon fontSize="large" />
         </button>
       </Tooltip>
       <Tooltip title="Filtrar">
-        <button
-          className="btn-filter"
-          onClick={() => setModalFiltroAbierto(true)}
-        >
+        <button className="btn-filter" onClick={() => setModalFiltroAbierto(true)}>
           <TuneIcon fontSize="large" />
         </button>
       </Tooltip>
 
-      <div className="table-wrapper">
-        <TableContainer component={Paper} className="table-container">
-          <Table size="medium" aria-label="tabla de personajes">
-            <TableHead>
-              <TableRow className="table-head">
+      <TableContainer component={Paper} className="table-container">
+        <Table size="medium" aria-label="Tabla de negocios">
+          <TableHead>
+            <TableRow>
+              <TableCell><strong>Imagen</strong></TableCell>
+              <TableCell><strong>Nombre</strong></TableCell>
+              <TableCell><strong>RUT</strong></TableCell>
+              <TableCell><strong>Descripción</strong></TableCell>
+              <TableCell><strong>Dirección</strong></TableCell>
+              <TableCell><strong>Teléfono</strong></TableCell>
+              <TableCell><strong>Horario</strong></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {negociosFiltrados.map((n) => (
+              <TableRow key={n.ID_NEGOCIOS} hover style={{ cursor: "pointer" }} onClick={() => navigate(`/ProductoNegocio/${n.ID_NEGOCIOS}`)}>
+
                 <TableCell>
-                  <strong>Imagen</strong>
+                  <img
+                    src={n.Imagen}
+                    alt={n.NombreNegocio}
+                    style={{ width: 50, height: 50, borderRadius: 8 }}
+                  />
                 </TableCell>
+                <TableCell>{n.NombreNegocio}</TableCell>
+                <TableCell>{n.RUT}</TableCell>
                 <TableCell>
-                  <strong>Nombre</strong>
+                  {n.Descripcion.length > 50
+                    ? n.Descripcion.slice(0, 50) + "..."
+                    : n.Descripcion}
                 </TableCell>
-                <TableCell>
-                  <strong>Estado</strong>
-                </TableCell>
-                <TableCell>
-                  <strong>Especie</strong>
-                </TableCell>
-                <TableCell>
-                  <strong>Origen</strong>
-                </TableCell>
+                <TableCell>{n.Direccion}</TableCell>
+                <TableCell>{n.NumTelefono}</TableCell>
+                <TableCell>{n.Horario}</TableCell>
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {personajesFiltrados.map((personaje) => (
-                <TableRow key={personaje.id}>
-                  <TableCell>
-                    <img
-                      src={personaje.image}
-                      alt={personaje.name}
-                      style={{
-                        width: "50px",
-                        height: "50px",
-                        borderRadius: "8px",
-                      }}
-                    />
-                  </TableCell>
-                  <TableCell>{personaje.name}</TableCell>
-                  <TableCell>{personaje.status}</TableCell>
-                  <TableCell>{personaje.species}</TableCell>
-                  <TableCell>{personaje.origin.name}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
 
       <ModalBusqueda
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         onSearch={handleSearch}
       />
-      <FiltroCategorias
-        isOpen={modalFiltroAbierto}
-        onClose={() => setModalFiltroAbierto(false)}
-        personajes={personajes}
-        onFilter={(personajesFiltrados) => {
-          setPersonajesFiltrados(personajesFiltrados);
-        }}
-      />
+    <FiltroCategorias
+  isOpen={modalFiltroAbierto}
+  onClose={() => setModalFiltroAbierto(false)}
+  negocios={negocios}
+  categorias={categorias} 
+  onFilter={(f) => setNegociosFiltrados(f)}
+  
+/>
+
+
     </div>
   );
 };

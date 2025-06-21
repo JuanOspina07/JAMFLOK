@@ -1,0 +1,72 @@
+.form-producto-container {
+  max-width: 700px;
+  margin: 3rem auto;
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c2c2c;
+}
+
+.form-producto-container h2 {
+  text-align: center;
+  color: #c6a664;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-producto {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.input-group input,
+.input-group textarea {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 1.5px solid #dcdcdc;
+  border-radius: 12px;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease;
+}
+
+.input-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: #c6a664;
+  background-color: #fff;
+}
+
+.form-producto button {
+  background-color: #c6a664;
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-producto button:hover {
+  background-color: #b3934d;
+}

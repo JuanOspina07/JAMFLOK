@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../Styles/PaginaEmprendedor.css'; // Estilos personalizados
+import '../Styles/PaginaEmprendedor.css';
 
 const MisNegocios = ({ idUsuario: propIdUsuario }) => {
   const [negocios, setNegocios] = useState([]);
   const navigate = useNavigate();
   const idUsuario = propIdUsuario || localStorage.getItem('idUsuario');
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/", { replace: true });
+  };
 
   const obtenerMisNegocios = async () => {
     if (!idUsuario) return;
@@ -14,7 +19,7 @@ const MisNegocios = ({ idUsuario: propIdUsuario }) => {
       const res = await axios.get(`http://localhost:4000/api/negocios/${idUsuario}`);
       setNegocios(res.data);
     } catch (error) {
-      console.error('❌ Error al obtener los negocios:', error);
+      console.error('Error al obtener los negocios:', error);
     }
   };
 
@@ -26,9 +31,14 @@ const MisNegocios = ({ idUsuario: propIdUsuario }) => {
     <div className="mis-negocios-container">
       <div className="header">
         <h2 className="titulo">Mis Negocios</h2>
-        <button onClick={() => navigate('/nuevo-negocio')} className="btn-agregar">
-          + Añadir Negocio
-        </button>
+        <div className="acciones-header">
+          <button className="btn-agregar" onClick={() => navigate('/nuevo-negocio')}>
+            + Añadir Negocio
+          </button>
+          <button className="btn-logout" onClick={handleLogout}>
+            Cerrar Sesión
+          </button>
+        </div>
       </div>
 
       {negocios.length === 0 ? (
@@ -36,7 +46,10 @@ const MisNegocios = ({ idUsuario: propIdUsuario }) => {
       ) : (
         <div className="tarjetas-grid">
           {negocios.map((negocio) => (
-            <div key={negocio.ID_NEGOCIOS} className="tarjeta-negocio">
+            <div  key={negocio.ID_NEGOCIOS}
+  className="tarjeta-negocio"
+  onClick={() => navigate(`/negocio/${negocio.ID_NEGOCIOS}`)}
+  style={{ cursor: 'pointer' }}>
               <img
                 src={negocio.Imagen}
                 alt={negocio.NombreNegocio}
@@ -52,7 +65,8 @@ const MisNegocios = ({ idUsuario: propIdUsuario }) => {
                 <p className="info"><strong>Ciudad:</strong> {negocio.Ciudad}</p>
                 <p className="info"><strong>Dirección:</strong> {negocio.Direccion}</p>
                 <p className="info"><strong>Horario:</strong> {negocio.Horario}</p>
-                <p className="info"><strong>Telefono:</strong> {negocio.NumTelefono}</p>
+                <p className="info"><strong>Teléfono:</strong> {negocio.Telefono}</p>
+                <p className="info"><strong>RUT:</strong> {negocio.RUT}</p>
               </div>
             </div>
           ))}

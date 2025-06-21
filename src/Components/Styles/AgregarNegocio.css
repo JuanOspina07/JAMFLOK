@@ -1,0 +1,85 @@
+.form-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-container h2 {
+  text-align: center;
+  color: #2c2c2c;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.form-negocio {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  padding: 14px 14px 14px 16px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1.5px solid #cbd5e0;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease;
+}
+
+.input-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: #c6a664;
+  background-color: #fff;
+}
+
+.input-group label {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background-color: #ffffff;
+  padding: 0 5px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+select:invalid {
+  color: #9ca3af;
+}
+
+.form-negocio button {
+  background-color: #c6a664;
+  color: #fff;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-negocio button:hover {
+  background-color: #b3934d;
+}
