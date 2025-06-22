@@ -19,14 +19,6 @@ import {
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-
-/////////////////////////////////////////////
-/// No tuvieron un final feliz,          //// 
-///  pero sonrieron todas las horas      ////
-/// que pasaron juntos. Y sólo por eso,  ////
-///  valió la pena                       ////
-/////////////////////////////////////////////
-
 const ProductCard = ({ product, onAddToCart }) => (
   <Grid item xs={12} sm={6} md={4} lg={3}>
     <Card
@@ -34,11 +26,15 @@ const ProductCard = ({ product, onAddToCart }) => (
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        borderRadius: 3,
-        transition: "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
+        borderRadius: "12px",
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+        background: "linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)",
+        border: "1px solid rgba(198, 166, 100, 0.4)",
+        boxShadow: "0 8px 20px rgba(0, 0, 0, 0.4)",
+        color: "#ffffff",
         "&:hover": {
-          transform: "scale(1.03)",
-          boxShadow: 6,
+          transform: "translateY(-5px)",
+          boxShadow: "0 12px 25px rgba(198, 166, 100, 0.3)",
         },
       }}
     >
@@ -47,16 +43,47 @@ const ProductCard = ({ product, onAddToCart }) => (
         height="200"
         image={product.Imagen}
         alt={product.NombreProducto}
-        sx={{ objectFit: "cover" }}
+        sx={{ 
+          objectFit: "cover",
+          borderTopLeftRadius: "12px",
+          borderTopRightRadius: "12px",
+        }}
       />
       <CardContent sx={{ flexGrow: 1 }}>
-        <Typography variant="h6" component="div" fontWeight="bold">
+        <Typography 
+          variant="h6" 
+          component="div" 
+          fontWeight="bold"
+          sx={{ 
+            fontFamily: "'Montserrat', sans-serif",
+            color: "#c6a664",
+            minHeight: "64px",
+            display: "flex",
+            alignItems: "center"
+          }}
+        >
           {product.NombreProducto}
         </Typography>
-        <Typography variant="h5" color="primary.main" sx={{ my: 1 }}>
+        <Typography 
+          variant="h5" 
+          sx={{ 
+            my: 1, 
+            color: "#c6a664",
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: 600,
+            textShadow: "0 1px 2px rgba(0,0,0,0.3)"
+          }}
+        >
           ${new Intl.NumberFormat("es-CO").format(product.Precio)}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography 
+          variant="body2" 
+          sx={{ 
+            color: "rgba(255, 255, 255, 0.7)", 
+            minHeight: "60px",
+            fontFamily: "'Roboto', sans-serif",
+          }}
+        >
           {product.Descripcion.length > 80
             ? `${product.Descripcion.slice(0, 80)}...`
             : product.Descripcion}
@@ -67,6 +94,22 @@ const ProductCard = ({ product, onAddToCart }) => (
           variant="contained"
           fullWidth
           onClick={() => onAddToCart(product)}
+          sx={{
+            background: "linear-gradient(45deg, #c6a664, #d4b97a)",
+            color: "#2e2e2e",
+            borderRadius: "25px",
+            fontWeight: 600,
+            padding: "10px 20px",
+            transition: "all 0.3s ease",
+            fontFamily: "'Montserrat', sans-serif",
+            letterSpacing: "0.5px",
+            "&:hover": {
+              background: "linear-gradient(45deg, #d4b97a, #c6a664)",
+              transform: "translateY(-2px)",
+              boxShadow: "0 5px 15px rgba(198, 166, 100, 0.4)",
+              color: "#ffffff",
+            },
+          }}
         >
           Añadir al Carrito
         </Button>
@@ -161,76 +204,181 @@ const ProductosNegocio = () => {
           height: "80vh",
         }}
       >
-        <CircularProgress />
+        <CircularProgress sx={{ color: "#c6a664" }} />
       </Box>
     );
+    
   if (error)
     return (
-      <Typography color="error" align="center" sx={{ mt: 4 }}>
-        {error}
-      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "80vh",
+          color: "#000000",
+        }}
+      >
+        <Typography variant="h5" color="error" align="center">
+          {error}
+        </Typography>
+      </Box>
     );
 
   return (
-    <>
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            mb: 4,
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 4,
+          py: 2,
+          position: "relative",
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            bottom: 0,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "200px",
+            height: "3px",
+            background: "linear-gradient(90deg, #c6a664, #d4b97a)",
+            borderRadius: "3px",
+          }
+        }}
+      >
+        <Tooltip title="Regresar">
+          <IconButton 
+            onClick={() => navigate(-1)} 
+            aria-label="regresar"
+            sx={{
+              color: "#c6a664",
+              bgcolor: "rgba(198, 166, 100, 0.1)",
+              "&:hover": {
+                bgcolor: "rgba(198, 166, 100, 0.2)",
+              }
+            }}
+          >
+            <KeyboardBackspaceIcon fontSize="large" />
+          </IconButton>
+        </Tooltip>
+
+        <Typography
+          variant="h3"
+          component="h1"
+          align="center"
+          sx={{ 
+            fontWeight: 700,
+            flexGrow: 1,
+            color: "#1a1a1a",
+            fontFamily: "'Montserrat', sans-serif",
+            textTransform: "uppercase",
+            letterSpacing: "1.5px",
+            textShadow: "0 1px 2px rgba(0, 0, 0, 0.1)",
           }}
         >
-          <Tooltip title="Regresar">
-            <IconButton onClick={() => navigate(-1)} aria-label="regresar">
-              <KeyboardBackspaceIcon fontSize="large" />
-            </IconButton>
-          </Tooltip>
+          Productos del Negocio
+        </Typography>
 
+        <Tooltip title="Ver Carrito">
+          <IconButton
+            onClick={() => setIsCartOpen(true)}
+            sx={{
+              color: "#c6a664",
+              bgcolor: "rgba(198, 166, 100, 0.1)",
+              "&:hover": {
+                bgcolor: "rgba(198, 166, 100, 0.2)",
+              }
+            }}
+            aria-label="ver carrito"
+          >
+            <Badge 
+              badgeContent={cartItems.length} 
+              color="error"
+              sx={{
+                "& .MuiBadge-badge": {
+                  right: 5,
+                  top: 5,
+                  padding: "0 4px",
+                  fontWeight: "bold",
+                }
+              }}
+            >
+              <ShoppingCartIcon fontSize="large" />
+            </Badge>
+          </IconButton>
+        </Tooltip>
+      </Box>
+
+      {productos.length === 0 ? (
+        <Box
+          sx={{
+            textAlign: "center",
+            py: 10,
+            bgcolor: "rgba(255, 255, 255, 0.9)",
+            borderRadius: "12px",
+            border: "1px solid rgba(198, 166, 100, 0.3)",
+            backdropFilter: "blur(5px)",
+            maxWidth: "600px",
+            mx: "auto",
+            boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)",
+          }}
+        >
           <Typography
             variant="h4"
-            component="h1"
-            align="center"
-            sx={{ fontWeight: "bold", flexGrow: 1 }}
+            sx={{
+              color: "#c6a664",
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 600,
+              mb: 2
+            }}
           >
-            PRODUCTOS DEL NEGOCIO
+            Este negocio aún no tiene productos
           </Typography>
-
-          <Tooltip title="Ver Carrito">
-            <IconButton
-              onClick={() => setIsCartOpen(true)}
-              // color=" #a3863e"
-              aria-label="ver carrito"
-            >
-              <Badge badgeContent={cartItems.length} color="error">
-                <ShoppingCartIcon fontSize="large" />
-              </Badge>
-            </IconButton>
-          </Tooltip>
-        </Box>
-
-        {productos.length === 0 ? (
           <Typography
-            variant="h6"
-            align="center"
-            color="text.secondary"
-            sx={{ mt: 5 }}
+            variant="body1"
+            sx={{ 
+              color: "#555555",
+              fontFamily: "'Roboto', sans-serif",
+              maxWidth: "500px",
+              mx: "auto"
+            }}
           >
-            Este negocio aún no tiene productos registrados.
+            Parece que este negocio todavía no ha añadido productos a su catálogo.
           </Typography>
-        ) : (
-          <Grid container spacing={4} justifyContent="center">
-            {productos.map((prod) => (
-              <ProductCard
-                key={prod.ID_PRODUCTOS}
-                product={prod}
-                onAddToCart={handleAddToCart}
-              />
-            ))}
-          </Grid>
-        )}
-      </Container>
+          <Button
+            variant="contained"
+            onClick={() => navigate(-1)}
+            sx={{
+              mt: 3,
+              background: "linear-gradient(45deg, #c6a664, #d4b97a)",
+              color: "#2e2e2e",
+              borderRadius: "25px",
+              fontWeight: 600,
+              padding: "10px 30px",
+              fontFamily: "'Montserrat', sans-serif",
+              "&:hover": {
+                background: "linear-gradient(45deg, #d4b97a, #c6a664)",
+                transform: "translateY(-2px)",
+                boxShadow: "0 5px 15px rgba(198, 166, 100, 0.3)",
+              },
+            }}
+          >
+            Volver atrás
+          </Button>
+        </Box>
+      ) : (
+        <Grid container spacing={4} justifyContent="center">
+          {productos.map((prod) => (
+            <ProductCard
+              key={prod.ID_PRODUCTOS}
+              product={prod}
+              onAddToCart={handleAddToCart}
+            />
+          ))}
+        </Grid>
+      )}
 
       <ShopCar
         open={isCartOpen}
@@ -240,7 +388,7 @@ const ProductosNegocio = () => {
         onRemoveItem={handleRemoveFromCart}
         onClearCart={handleClearCart}
       />
-    </>
+    </Container>
   );
 };
 

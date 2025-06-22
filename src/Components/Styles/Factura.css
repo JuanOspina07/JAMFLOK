@@ -1,0 +1,197 @@
+
+.factura-container {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    max-width: 700px;
+    margin: 30px auto;
+    animation: factura-fadeInSlide 0.6s ease-out;
+    border: 1px solid rgba(198, 166, 100, 0.4);
+    color: #ffffff;
+  }
+  
+  @keyframes factura-fadeInSlide {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .factura-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #c6a664;
+    position: relative;
+  }
+  
+  .factura-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #c6a664, #d4b97a);
+  }
+  
+  .factura-title {
+    font-family: 'Montserrat', sans-serif;
+    color: #c6a664;
+    font-weight: 700;
+    font-size: 26px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+  }
+  
+  .factura-info {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  
+  .factura-section-title {
+    font-family: 'Montserrat', sans-serif;
+    color: #c6a664;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 25px 0 15px;
+    text-transform: uppercase;
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    background: rgba(198, 166, 100, 0.15);
+    border-radius: 8px;
+    border: 1px solid rgba(198, 166, 100, 0.3);
+  }
+  
+  .factura-table {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(198, 166, 100, 0.3);
+    backdrop-filter: blur(5px);
+    margin-bottom: 30px;
+  }
+  
+  .factura-table-header {
+    background: linear-gradient(45deg, #c6a664, #d4b97a);
+  }
+  
+  .factura-header-cell {
+    font-weight: 700 !important;
+    color: #2e2e2e !important;
+    font-size: 1rem;
+    padding: 16px !important;
+    border-bottom: 2px solid rgba(46, 46, 46, 0.5) !important;
+  }
+  
+  .factura-table-row:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+  
+  .factura-table-row:hover {
+    background-color: rgba(198, 166, 100, 0.12);
+  }
+  
+  .factura-table-cell {
+    color: #ffffff !important;
+    font-size: 0.95rem;
+    padding: 14px 16px !important;
+    border-bottom: 1px solid rgba(198, 166, 100, 0.2) !important;
+  }
+  
+  .factura-total-container {
+    background: rgba(198, 166, 100, 0.2);
+    border-radius: 12px;
+    padding: 15px 20px;
+    text-align: right;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(198, 166, 100, 0.3);
+  }
+  
+  .factura-total {
+    font-family: 'Montserrat', sans-serif;
+    color: #c6a664;
+    font-weight: 700;
+    font-size: 22px;
+    transition: transform 0.3s ease;
+    margin: 0;
+  }
+  
+  .factura-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 25px;
+  }
+  
+  .factura-gold-btn {
+    background: linear-gradient(45deg, #c6a664, #d4b97a);
+    color: #ffffff;
+    border-radius: 25px;
+    text-transform: none;
+    font-weight: 500;
+    padding: 10px 30px;
+    border: none;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(198, 166, 100, 0.4);
+    font-size: 1rem;
+    min-width: 160px;
+  }
+  
+  .factura-gold-btn:hover {
+    background: linear-gradient(45deg, #d4b97a, #c6a664);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(198, 166, 100, 0.6);
+  }
+  
+  @media (max-width: 768px) {
+    .factura-container {
+      padding: 20px;
+      margin: 20px 15px;
+    }
+    
+    .factura-title {
+      font-size: 22px;
+    }
+    
+    .factura-section-title {
+      font-size: 18px;
+    }
+    
+    .factura-actions {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .factura-gold-btn {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .factura-header-cell {
+      font-size: 0.9rem;
+      padding: 12px 10px !important;
+    }
+    
+    .factura-table-cell {
+      font-size: 0.85rem;
+      padding: 12px 10px !important;
+    }
+    
+    .factura-total {
+      font-size: 20px;
+    }
+  }

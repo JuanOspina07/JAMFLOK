@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+.pasarela-dialog {
+  font-family: 'Roboto', sans-serif;
+}
+
+.pasarela-title {
+  background: linear-gradient(135deg, #d4af37 0%, #2c3e50 100%);
+  color: #ffffff;
+  padding: 16px;
+  text-align: center;
+}
+
+.pasarela-content {
+  background-color: #f9f9f9;
+  padding: 24px;
+}
+
+.pasarela-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  color: #2c3e50;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.resumen-items {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.resumen-item {
+  padding: 12px 16px;
+  transition: background-color 0.2s;
+}
+
+.resumen-item:hover {
+  background-color: #f9f9f9;
+}
+
+.total {
+  font-family: 'Montserrat', sans-serif;
+  color: #d4af37;
+  font-weight: 700;
+}
+
+.metodo-pago {
+  margin-top: 24px;
+}
+
+.metodo-select {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.payment-fields .MuiTextField-root {
+  margin-bottom: 16px;
+}
+
+.payment-fields .MuiOutlinedInput-root {
+  border-radius: 8px;
+}
+
+.payment-fields .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #d4af37;
+}
+
+.payment-fields .Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #d4af37;
+}
+
+.pasarela-error {
+  color: #dc3545;
+  font-size: 0.9rem;
+  text-align: center;
+  background-color: #ffe6e6;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.pasarela-actions {
+  padding: 16px 24px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e0e0e0;
+}
+
+.cancel-btn {
+  border-color: #2c3e50;
+  color: #2c3e50;
+  border-radius: 8px;
+  text-transform: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.cancel-btn:hover {
+  background-color: #2c3e50;
+  color: #ffffff;
+}
+
+.pagar-btn {
+  background-color: #d4af37;
+  color: #ffffff;
+  border-radius: 8px;
+  text-transform: none;
+  font-weight: 500;
+  padding: 12px 24px;
+  transition: all 0.3s;
+}
+
+.pagar-btn:hover {
+  background-color: #b8972e;
+}
+
+.pagar-btn:disabled {
+  background-color: #cccccc;
+}
+
+@media (max-width: 600px) {
+  .pasarela-container {
+    padding: 16px;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .pagar-btn, .cancel-btn {
+    padding: 8px 16px;
+  }
+}
