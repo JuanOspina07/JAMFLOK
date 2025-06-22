@@ -53,9 +53,9 @@ const Recuperar = () => {
           </button>
         </div>
         <div className="pie">
-          <a className="links" href="#" target="_blank">Privacidad</a>
-          <a className="links" href="#" target="_blank">Ayuda</a>
-          <a className="links" href="#" target="_blank">Condiciones</a>
+          <a className="links" onClick={() => navigate("/privacidad")}>Privacidad</a>
+          <a className="links" onClick={() => navigate("/ayuda")}>Ayuda</a>
+          <a className="links" onClick={() => navigate("/condiciones")}>Condiciones</a>
         </div>
       </div>
       <button className="regresar" onClick={() => navigate("/")}>
