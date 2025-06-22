@@ -13,12 +13,18 @@ import AgregarNegocio from './Components/Shared/AgregarNegocio';
 import DetalleNegocio from './Components/Shared/NegocioDetalle';
 import AgregarProducto from './Components/Shared/AgregarProducto';
 import ProductosNegocio from './Components/Shared/ProductosNegocio';
+import PanelAjustes from './Components/Shared/PanelAjustes';
+import EditarPanel from './Components/Shared/EditarPanel';
+import Reseñas from './Components/Shared/Reseñas';
 function App() {
   return (
     <Routes>
       <Route path="/" element={<PaginaInicio />} />
       <Route path="/cliente" element={<PaginaCliente />} />
       <Route path="/emprendedor" element={<PaginaEmprendedor />} />
+      <Route path="/ajustes" element={<PanelAjustes />} />
+      <Route path="/editar-panel" element={<EditarPanel />} />
+      <Route path="/Reseñas" element={<Reseñas />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Soporte" element={<Soporte />} />
       <Route path="/Register" element={<Register />} />
