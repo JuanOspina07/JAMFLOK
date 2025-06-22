@@ -16,6 +16,10 @@ import ProductosNegocio from './Components/Shared/ProductosNegocio';
 import Privacidad from './Components/Shared/Privacidad';
 import Ayuda from './Components/Shared/Ayuda';
 import Condiciones from './Components/Shared/Condiciones';
+import PanelAjustes from './Components/Shared/PanelAjustes';
+import EditarPanel from './Components/Shared/EditarPanel';
+import Reseñas from './Components/Shared/Reseñas';
+
 
 
 function App() {
@@ -24,6 +28,9 @@ function App() {
       <Route path="/" element={<PaginaInicio />} />
       <Route path="/cliente" element={<PaginaCliente />} />
       <Route path="/emprendedor" element={<PaginaEmprendedor />} />
+      <Route path="/ajustes" element={<PanelAjustes />} />
+      <Route path="/editar-panel" element={<EditarPanel />} />
+      <Route path="/Reseñas" element={<Reseñas />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Soporte" element={<Soporte />} />
       <Route path="/Register" element={<Register />} />

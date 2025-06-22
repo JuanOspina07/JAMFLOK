@@ -38,6 +38,9 @@ const MisNegocios = ({ idUsuario: propIdUsuario }) => {
           <button className="btn-logout" onClick={handleLogout}>
             Cerrar Sesión
           </button>
+           <button className="btn-agregar" onClick={() => navigate('/ajustes')}>
+            Ajustes
+          </button>
         </div>
       </div>
 
