@@ -14,7 +14,7 @@ import {
   Alert,
   Dialog,
 } from "@mui/material";
-
+//Que viva la chocha
 const Factura = ({ idFactura, onClose }) => {
   const [factura, setFactura] = useState([]);
   const [loading, setLoading] = useState(true);
