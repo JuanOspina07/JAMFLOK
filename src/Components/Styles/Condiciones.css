@@ -1,0 +1,57 @@
+.Logo7 {
+    display: block;
+    width: 130px;
+    height: 130px;
+    margin: 4% auto 0 auto;
+    padding-top: 2%;
+}
+
+.condiciones {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    padding: 4%;
+    width: 40%;
+    height: 65vh;
+    margin: 5% auto;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #000000;
+    font-size: 0.6em;
+    line-height: 1.6;
+    padding-top: 0;
+    overflow-y: auto;
+}
+
+.condiciones::-webkit-scrollbar {
+    width: 6px;
+}
+
+.condiciones::-webkit-scrollbar-thumb {
+    background-color: #C6A664;
+    border-radius: 10px;
+}
+
+.condiciones h2 {
+    color: #c6a664;
+    font-size: 1.3em;
+    margin-top: 1.5em;
+    text-align: center;
+}
+
+.condiciones h3 {
+    color: #c6a664;
+    font-size: 1.1em;
+    margin-top: 1.2em;
+}
+
+.condiciones p, .condiciones ul {
+    margin: 0.8em 0;
+}
+
+.condiciones ul {
+    padding-left: 1.5em;
+    list-style-type: disc;
+}
+
+.condiciones li {
+    margin-bottom: 0.5em;
+}
