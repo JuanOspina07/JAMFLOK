@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Loader2, Eye, EyeOff, ChevronRight } from "lucide-react";
-import Sidebar from "./SideBar";
+import SidebarCliente from "./SideBarCliente";
 import "../Styles/EditarPanel.css";
 import {
   Card,
@@ -23,7 +23,7 @@ import {
   InputLabel,
 } from "@mui/material";
 
-const EditarPanel = () => {
+const EditarPanelUser = () => {
   const navigate = useNavigate();
   const userId = localStorage.getItem("idUsuario");
 
@@ -297,10 +297,9 @@ const EditarPanel = () => {
       </div>
     );
   }
-
   return (
     <div className="dashboard-container">
-      <Sidebar onLogout={() => localStorage.removeItem("idUsuario")} />
+      <SidebarCliente onLogout={() => localStorage.removeItem("idUsuario")} />
       <div className="main-content">
         <header className="content-header">
           <Typography variant="h1">Editar Perfil</Typography>
@@ -615,4 +614,4 @@ const EditarPanel = () => {
   );
 };
 
-export default EditarPanel;
+export default EditarPanelUser;
