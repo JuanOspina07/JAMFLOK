@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Home, LogOut, SlidersHorizontal, Menu, X, Star } from "lucide-react";
+import { Home, LogOut, SlidersHorizontal, Menu, X, Plus } from "lucide-react";
 import "../Styles/PanelAjustes.css";
 
 const Sidebar = ({ onLogout }) => {
@@ -9,12 +9,8 @@ const Sidebar = ({ onLogout }) => {
 
   const navItems = [
     { path: "/emprendedor", icon: <Home size={22} />, name: "Inicio" },
-    {
-      path: "/ajustes",
-      icon: <SlidersHorizontal size={22} />,
-      name: "Ajustes",
-    },
-    // { path: "/reseñas", icon: <Star size={22} />, name: "Reseñas" },
+    {path: "/ajustes", icon: <SlidersHorizontal size={22} />,name: "Ajustes" },
+    { path: "/nuevo-negocio", icon: <Plus size={22} />, name: "Nuevo Negocio" },
   ];
 
   const handleLogout = () => {
