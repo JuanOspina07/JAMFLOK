@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Home, LogOut, SlidersHorizontal, Menu, X, Plus } from "lucide-react";
-import "../Styles/PanelAjustes.css";
+import "../Styles/Sidebar.css";
+import logo from "../../../public/Logo.png"
 
 const Sidebar = ({ onLogout }) => {
   const navigate = useNavigate();
@@ -25,91 +26,69 @@ const Sidebar = ({ onLogout }) => {
 
   return (
     <>
-      <aside
-        className="sidebar-desktop"
-        role="navigation"
-        aria-label="Main navigation"
+     <aside className="sidebar-desktop-xps9" role="navigation" aria-label="Main navigation">
+  <div className="sidebar-header-xps9">
+    <img src={logo} alt="Logo" className="logo-xps9" />
+  </div>
+  <nav className="sidebar-nav-xps9">
+    {navItems.map((item) => (
+      <NavLink
+        key={item.name}
+        to={item.path}
+        className={({ isActive }) =>
+          `nav-item-xps9 ${isActive ? "nav-item-active-xps9" : ""}`
+        }
       >
-        <div className="sidebar-header">
-          <span className="logo">JAMFLOK</span>
-        </div>
-        <nav className="sidebar-nav">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.name}
-              to={item.path}
-              className={({ isActive }) =>
-                `nav-item ${isActive ? "active" : ""}`
-              }
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === "Enter" && navigate(item.path)}
-            >
-              {item.icon}
-              <span>{item.name}</span>
-            </NavLink>
-          ))}
-        </nav>
-        <div className="sidebar-footer">
-          <button
-            onClick={handleLogout}
-            className="nav-item logout"
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => e.key === "Enter" && handleLogout()}
-          >
-            <LogOut size={22} />
-            <span>Cerrar sesión</span>
-          </button>
-        </div>
-      </aside>
+        {item.icon}
+        <span className="nav-label-xps9">{item.name}</span>
+      </NavLink>
+    ))}
+  </nav>
+  <div className="sidebar-footer-xps9">
+    <button onClick={handleLogout} className="nav-item-xps9 logout-xps9">
+      <LogOut size={22} />
+      <span className="nav-label-xps9">Cerrar sesión</span>
+    </button>
+  </div>
+</aside>
 
-      {/* Mobile Sidebar */}
-      <div className="sidebar-mobile">
-        <div className="mobile-header">
-          <span className="logo">JAMFLOK</span>
-          <button
-            onClick={toggleMobileMenu}
-            className="mobile-menu-toggle"
-            aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-        {isMobileMenuOpen && (
-          <nav className="mobile-nav">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.path}
-                className={({ isActive }) =>
-                  `nav-item ${isActive ? "active" : ""}`
-                }
-                onClick={() => setMobileMenuOpen(false)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === "Enter" && navigate(item.path)}
-              >
-                {item.icon}
-                <span>{item.name}</span>
-              </NavLink>
-            ))}
-            <button
-              onClick={() => {
-                handleLogout();
-                setMobileMenuOpen(false);
-              }}
-              className="nav-item logout"
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === "Enter" && handleLogout()}
-            >
-              <LogOut size={22} />
-              <span>Cerrar sesión</span>
-            </button>
-          </nav>
-        )}
-      </div>
+{/* Mobile Sidebar */}
+<div className="sidebar-mobile-xps9">
+  <div className="mobile-header-xps9">
+    <span className="mobile-logo-xps9">JAMFLOK</span>
+    <button onClick={toggleMobileMenu} className="mobile-menu-toggle-xps9">
+      {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+    </button>
+  </div>
+  {isMobileMenuOpen && (
+    <nav className="mobile-nav-xps9">
+      {navItems.map((item) => (
+        <NavLink
+          key={item.name}
+          to={item.path}
+          className={({ isActive }) =>
+            `nav-item-xps9 ${isActive ? "nav-item-active-xps9" : ""}`
+          }
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          {item.icon}
+          <span className="nav-label-xps9">{item.name}</span>
+        </NavLink>
+      ))}
+      <button
+        onClick={() => {
+          handleLogout();
+          setMobileMenuOpen(false);
+        }}
+        className="nav-item-xps9 logout-xps9"
+      >
+        <LogOut size={22} />
+        <span className="nav-label-xps9">Cerrar sesión</span>
+      </button>
+    </nav>
+  )}
+</div>
+
     </>
   );
 };

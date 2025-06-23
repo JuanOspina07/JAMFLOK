@@ -57,21 +57,22 @@ body, html {
   padding: 40px 30px;
   border-radius: 20px;
   text-align: center;
-  width: 300px;
+  width: 450px;
 }
 
 .login-box h2 {
   color: #C6A664;
-  margin-bottom: 20px;
-  font-size: 24px;
+  margin-bottom: 40px;
+  font-size: 30px;
 }
 
 .login-box label {
   display: block;
   color: #C6A664;
   text-align: left;
-  margin: 10px 0 5px;
+  margin: 5px 0 0px;
   font-weight: bold;
+  font-size: 22px;
 }
 
 .login-box input {

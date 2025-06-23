@@ -161,37 +161,42 @@ function Registro () {
 
       <main className="Register-container">
         <div className="Register-box">
-          <h2>REGISTER</h2>
+          <h2>REGISTRO</h2>
           <div className="UserBox2">
-            <input type="text" value={primerNombre} onChange={(e) => setPrimerNombre(e.target.value)} required className="inputfield2" />
             <label className="label2">Primer Nombre</label>
+            <input type="text" value={primerNombre} onChange={(e) => setPrimerNombre(e.target.value)} required className="inputfield2" />
           </div>
           <div className="UserBox2">
-            <input type="text" value={segundoNombre} onChange={(e) => setSegundoNombre(e.target.value)} className="inputfield2" />
             <label className="label2">Segundo Nombre</label>
+            <input type="text" value={segundoNombre} onChange={(e) => setSegundoNombre(e.target.value)} className="inputfield2" />
           </div>
           <div className="UserBox2">
-            <input type="text" value={primerApellido} onChange={(e) => setPrimerApellido(e.target.value)} required className="inputfield2" />
             <label className="label2">Primer Apellido</label>
+            <input type="text" value={primerApellido} onChange={(e) => setPrimerApellido(e.target.value)} required className="inputfield2" />
+            
           </div>
           <div className="UserBox2">
-            <input type="text" value={segundoApellido} onChange={(e) => setSegundoApellido(e.target.value)} required className="inputfield2" />
             <label className="label2">Segundo Apellido</label>
+            <input type="text" value={segundoApellido} onChange={(e) => setSegundoApellido(e.target.value)} required className="inputfield2" />
+            
           </div>
           <div className="UserBox2">
+            <label className="label2">Edad</label>
             <input type="number" value={edad} onChange={(e) => { const valor = e.target.value.replace(/\D/g, ""); // Elimina cualquier caracter no numérico
   setEdad(valor);}} onKeyDown={(e) => {
     if (e.key === "e" || e.key === "E" || e.key === "-" || e.key === "+") {
       e.preventDefault();
     }
   }} required className="inputfield2" />
-            <label className="label2">Edad</label>
+            
           </div>
           <div className="UserBox2">
-            <input type="date" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} required className="inputfield2" />
             <label className="label2">Fecha de Nacimiento</label>
+            <input type="date" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} required className="inputfield2" />
+            
           </div>
           <div className="UserBox2">
+            <label className="label2">Tipo de Documento</label>
               <select
                 required
                 className="inputfield2"
@@ -205,17 +210,20 @@ function Registro () {
                   </option>
                 ))}
               </select>
-              <label className="label2">Tipo de Documento</label>
+              
             </div>
           <div className="UserBox2">
-            <input type="number" value={numeroDocumento} onChange={(e) => setNumeroDocumento(e.target.value)} required className="inputfield2" />
             <label className="label2">Identificación</label>
+            <input type="number" value={numeroDocumento} onChange={(e) => setNumeroDocumento(e.target.value)} required className="inputfield2" />
+            
           </div>
           <div className="UserBox2">
-            <input type="tel" value={celular} onChange={(e) => setCelular(e.target.value)}  required className="inputfield2" />
             <label className="label2">Celular</label>
+            <input type="tel" value={celular} onChange={(e) => setCelular(e.target.value)}  required className="inputfield2" />
+            
           </div>
           <div className="UserBox2">
+            <label className="label2">País</label>
               <select
                 required
                 className="inputfield2"
@@ -229,10 +237,11 @@ function Registro () {
                   </option>
                 ))}
               </select>
-              <label className="label2">País</label>
+              
           </div>
 
           <div className="UserBox2">
+            <label className="label2">Departamento</label>
             <select
               required
               className="inputfield2"
@@ -246,10 +255,11 @@ function Registro () {
                 </option>
               ))}
             </select>
-            <label className="label2">Departamento</label>
+            
           </div>
 
           <div className="UserBox2">
+            <label className="label2">Ciudad</label>
             <select
               required
               className="inputfield2"
@@ -263,9 +273,10 @@ function Registro () {
                 </option>
               ))}
             </select>
-            <label className="label2">Ciudad</label>
+            
           </div>
           <div className="UserBox2">
+             <label className="label2">Rol</label>
               <select
                 required
                 className="inputfield2"
@@ -279,21 +290,24 @@ function Registro () {
                   </option>
                 ))}
               </select>
-              <label className="label2">Rol</label>
+             
             </div>
           <div className="UserBox2">
+             <label className="label2">Nombre de Usuario</label>
             <input type="text" value={nombreUsuario} onChange={(e) => setNombreUsuario(e.target.value)} required className="inputfield2" />
-            <label className="label2">UserName</label>
+           
           </div>
           <div className="UserBox2">
-            <input type="email" value={correo} onChange={(e) => setCorreo(e.target.value)} required className="inputfield2" />
             <label className="label2">Correo</label>
+            <input type="email" value={correo} onChange={(e) => setCorreo(e.target.value)} required className="inputfield2" />
+            
           </div>
           <div className="UserBox2">
+              <label className="label2">Contraseña</label>
             <input type="password" value={contraseña} onChange={(e) => setContraseña(e.target.value)} required className="inputfield2" />
-            <label className="label2">Password</label>
+          
           </div>
-          <button className="btresg" type="submit" onClick={handleRegister}>Register</button>
+          <button className="btresg" type="submit" onClick={handleRegister}>RegistrO</button>
         </div>
       </main>
     </div>

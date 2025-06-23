@@ -5,23 +5,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import TuneIcon from "@mui/icons-material/Tune";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import Tooltip from "@mui/material/Tooltip";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from "@mui/material";
 import ModalBusqueda from "./ModalBusqueda";
 import FiltroCategorias from "./FiltroCategorias";
-
-/////////////////////////////////////////////////
-// Tengo una sensación horrible,pienso      /////
-//  que el tiempo pasa y no consigo nada,   /////
-// y eso me hace estremecerme hasta la raíz /////
-/////////////////////////////////////////////////
+import Sidebar from "./SideBarCliente";
 
 const PaginaCliente = () => {
   const navigate = useNavigate();
@@ -35,7 +21,7 @@ const PaginaCliente = () => {
     fetch("http://localhost:4000/api/categorias")
       .then((res) => res.json())
       .then((data) => setCategorias(data))
-      .catch((e) => console.error(" Error al cargar categorías:", e));
+      .catch((e) => console.error("Error al cargar categorías:", e));
   }, []);
 
   useEffect(() => {
@@ -58,82 +44,46 @@ const PaginaCliente = () => {
 
   return (
     <div className="pagina-cliente">
-      <Tooltip title="Regresar">
-        <button className="btn-regresar" onClick={() => navigate("/")}>
-          <KeyboardBackspaceIcon fontSize="large" />
-        </button>
-      </Tooltip>
-      <Tooltip title="Buscar">
-        <button className="btn-search" onClick={() => setModalOpen(true)}>
-          <SearchIcon fontSize="large" />
-        </button>
-      </Tooltip>
-      <Tooltip title="Filtrar">
-        <button
-          className="btn-filter"
-          onClick={() => setModalFiltroAbierto(true)}
-        >
-          <TuneIcon fontSize="large" />
-        </button>
-      </Tooltip>
+         <Sidebar onLogout={() => localStorage.removeItem("idUsuario")} />
+      <div className="encabezado-clientes">
+        <Tooltip title="Regresar">
+          <button className="btn-icono" onClick={() => navigate("/")}>
+            <KeyboardBackspaceIcon fontSize="large" />
+          </button>
+        </Tooltip>
+        <Tooltip title="Buscar">
+          <button className="btn-icono" onClick={() => setModalOpen(true)}>
+            <SearchIcon fontSize="large" />
+          </button>
+        </Tooltip>
+        <Tooltip title="Filtrar">
+          <button className="btn-icono" onClick={() => setModalFiltroAbierto(true)}>
+            <TuneIcon fontSize="large" />
+          </button>
+        </Tooltip>
+      </div>
 
-      <TableContainer component={Paper} className="table-container">
-        <Table size="medium" aria-label="Tabla de negocios">
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                <strong>Imagen</strong>
-              </TableCell>
-              <TableCell>
-                <strong>Nombre</strong>
-              </TableCell>
-              <TableCell>
-                <strong>RUT</strong>
-              </TableCell>
-              <TableCell>
-                <strong>Descripción</strong>
-              </TableCell>
-              <TableCell>
-                <strong>Dirección</strong>
-              </TableCell>
-              <TableCell>
-                <strong>Teléfono</strong>
-              </TableCell>
-              <TableCell>
-                <strong>Horario</strong>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {negociosFiltrados.map((n) => (
-              <TableRow
-                key={n.ID_NEGOCIOS}
-                hover
-                style={{ cursor: "pointer" }}
-                onClick={() => navigate(`/ProductoNegocio/${n.ID_NEGOCIOS}`)}
-              >
-                <TableCell>
-                  <img
-                    src={n.Imagen}
-                    alt={n.NombreNegocio}
-                    style={{ width: 50, height: 50, borderRadius: 8 }}
-                  />
-                </TableCell>
-                <TableCell>{n.NombreNegocio}</TableCell>
-                <TableCell>{n.RUT}</TableCell>
-                <TableCell>
-                  {n.Descripcion.length > 50
-                    ? n.Descripcion.slice(0, 50) + "..."
-                    : n.Descripcion}
-                </TableCell>
-                <TableCell>{n.Direccion}</TableCell>
-                <TableCell>{n.NumTelefono}</TableCell>
-                <TableCell>{n.Horario}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <h1 className="titulo-clientes">Negocios Disponibles</h1>
+
+      <div className="tarjetas-grid">
+        {negociosFiltrados.map((n) => (
+          <div
+            className="tarjeta-negocio"
+            key={n.ID_NEGOCIOS}
+            onClick={() => navigate(`/ProductoNegocio/${n.ID_NEGOCIOS}`)}
+          >
+            <img src={n.Imagen} alt={n.NombreNegocio} className="imagen-negocio" />
+            <div className="contenido">
+              <h3 className="nombre">{n.NombreNegocio}</h3>
+              <p className="descripcion">
+                {n.Descripcion.length > 100
+                  ? n.Descripcion.slice(0, 100) + "..."
+                  : n.Descripcion}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
 
       <ModalBusqueda
         isOpen={modalOpen}

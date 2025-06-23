@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Styles/Recuperar.css";
 import logo from "../../../public/Logo.png";
+import Swal from 'sweetalert2';
 import regresar from "../../../public/Regresar.png";
 
 const Recuperar = () => {
@@ -11,7 +12,16 @@ const Recuperar = () => {
 
   const handleEnviar = async () => {
     if (!correo) {
-      alert("Por favor ingresa tu correo electrónico");
+     Swal.fire({
+      icon: 'warning',
+      title: 'Campo vacío',
+      text: 'Por favor ingresa tu correo electrónico.',
+      background: '#fff8e1',           // Fondo amarillo claro
+  color: '#7a5600',                // Texto marrón
+  iconColor: '#ff9800',            // Ícono naranja
+  confirmButtonColor: '#ff9800',   // Botón naranja
+  confirmButtonText: 'Intentar de nuevo'
+    });
       return;
     }
 
@@ -19,19 +29,39 @@ const Recuperar = () => {
       const response = await axios.post("http://localhost:4000/api/recuperar", { correo });
 
       if (response.data.success) {
-        alert("✅ " + response.data.message);
+         Swal.fire({
+        icon: 'success',
+        title: '¡Éxito!',
+        text: 'Se envió el correo de recuperación exitosamente.',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Entendido'
+      }).then(() => {
         navigate("/login");
+      });
       } else {
-        alert("⚠️ " + response.data.message);
+       Swal.fire({
+        icon: 'warning',
+        title: 'Correo no encontrado',
+        text: 'No se encontró una cuenta asociada a ese correo.',
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Intentar de nuevo'
+      });
       }
     } catch (error) {
       console.error("Error al enviar solicitud:", error);
-      alert("❌ Error al intentar enviar el correo de recuperación");
+       Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Hubo un error al intentar enviar el correo de reccuperación.',
+    confirmButtonColor: '#d33',
+    confirmButtonText: 'Entendido'
+  });
     }
   };
 
   return (
     <div className="containerRecuperar">
+      <button className="btn-volver13" onClick={() => navigate(-1)}>←</button>
       <div className="espacio"></div>
       <div className="recuperar_box">
         <img src={logo} alt="Logo" className="Logo" />
@@ -58,9 +88,7 @@ const Recuperar = () => {
           <a className="links" onClick={() => navigate("/condiciones")}>Condiciones</a>
         </div>
       </div>
-      <button className="regresar" onClick={() => navigate("/")}>
-        <img src={regresar} alt="Regresar" />
-      </button>
+     
     </div>
   );
 };

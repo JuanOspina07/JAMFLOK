@@ -5,11 +5,13 @@ import logo from "../../../public/Logo.png";
 import TopBar from "./TopBar"; 
 
 const Condiciones = () => {
+     const navigate = useNavigate();
   return (
     <div>
       <TopBar />
       <div className="cont">
         <div className="condiciones">
+            <button className="btn-volver" onClick={() => navigate(-1)}>←</button>
           <div className="box_logo">
             <img src={logo} alt="Logo" className="Logo7" />
           </div>

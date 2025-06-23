@@ -87,9 +87,10 @@ const NuevoNegocio = () => {
     <div className="dashboard-container">
       <Sidebar onLogout={() => localStorage.removeItem("idUsuario")} />
       <div className="form-container">
-        <h2>Registrar Nuevo Negocio</h2>
+        
         <form onSubmit={handleSubmit} className="form-negocio">
           <div className="input-group">
+            <h2>Registrar Nuevo Negocio</h2>
             <label htmlFor="NombreNegocio">Nombre del negocio</label>
             <input
               name="NombreNegocio"
@@ -107,6 +108,7 @@ const NuevoNegocio = () => {
           <div className="input-group">
             <label htmlFor="Descripcion">Descripción</label>
             <textarea
+            className="InpAnadirNeg"
               name="Descripcion"
               id="Descripcion"
               onChange={handleChange}
@@ -117,6 +119,7 @@ const NuevoNegocio = () => {
           <div className="input-group">
             <label htmlFor="Direccion">Dirección</label>
             <input
+             className="InpAnadirNeg"
               name="Direccion"
               id="Direccion"
               onChange={handleChange}
@@ -127,6 +130,7 @@ const NuevoNegocio = () => {
           <div className="input-group">
             <label htmlFor="NumTelefono">Teléfono</label>
             <input
+             className="InpAnadirNeg"
               name="NumTelefono"
               id="NumTelefono"
               onChange={handleChange}
@@ -137,6 +141,7 @@ const NuevoNegocio = () => {
           <div className="input-group">
             <label htmlFor="Horario">Horario</label>
             <input
+             className="InpAnadirNeg"
               name="Horario"
               id="Horario"
               onChange={handleChange}
@@ -146,12 +151,13 @@ const NuevoNegocio = () => {
 
           <div className="input-group">
             <label htmlFor="Imagen">URL de imagen</label>
-            <input name="Imagen" id="Imagen" onChange={handleChange} required />
+            <input  className="InpAnadirNeg" name="Imagen" id="Imagen" onChange={handleChange} required />
           </div>
 
           <div className="input-group">
             <label htmlFor="ID_CATEGORIA">Categoría</label>
             <select
+             className="InpAnadirNeg"
               name="ID_CATEGORIA"
               id="ID_CATEGORIA"
               onChange={handleChange}
@@ -169,6 +175,7 @@ const NuevoNegocio = () => {
           <div className="input-group">
             <label htmlFor="ID_PAIS">País</label>
             <select
+             className="InpAnadirNeg"
               name="ID_PAIS"
               id="ID_PAIS"
               onChange={handleChange}
@@ -186,6 +193,7 @@ const NuevoNegocio = () => {
           <div className="input-group">
             <label htmlFor="ID_DEPARTAMENTO">Departamento</label>
             <select
+             className="InpAnadirNeg"
               name="ID_DEPARTAMENTO"
               id="ID_DEPARTAMENTO"
               onChange={handleChange}
@@ -205,6 +213,7 @@ const NuevoNegocio = () => {
           <div className="input-group">
             <label htmlFor="ID_CIUDAD">Ciudad</label>
             <select
+             className="InpAnadirNeg"
               name="ID_CIUDAD"
               id="ID_CIUDAD"
               onChange={handleChange}

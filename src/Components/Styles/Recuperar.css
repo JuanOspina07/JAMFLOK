@@ -38,7 +38,7 @@
     height: 30px;
     border: none;
     border-radius: 50px;
-    color:#fff;
+    color:#000000;
     margin-bottom: 0;
     text-align: center;
 }
@@ -76,21 +76,18 @@
     cursor: pointer;
     font-weight: bold;
 }
-.regresar{
-    width: 10%;
-    height: 20%;
-    position:fixed;
-    background: none;
-    border: none;
-    bottom: 1%;
-    left:2%;
-}
-.regresar img{
-    width: 80%;
-    height: auto;
+.btn-volver13 {
+  position: relative;
+
+  background: transparent;
+  border: none;
+  font-size: 80px;
+  color: #c6a664;
+  cursor: pointer;
+
+  transition: color 0.3s ease;
 }
 
-
-.espacio{
-    padding-top: 3%;
+.btn-volver13:hover {
+  color: #fff;
 }

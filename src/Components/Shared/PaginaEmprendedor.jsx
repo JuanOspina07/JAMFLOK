@@ -33,6 +33,10 @@ const MisNegocios = ({ idUsuario: propIdUsuario }) => {
   return (
     <div className="mis-negocios-container">
       <Sidebar onLogout={() => localStorage.removeItem("idUsuario")} />
+        <div className="contitulo">
+          <p className="titulo">Mis Negocios</p>
+        </div>
+       
 
       {negocios.length === 0 ? (
         <p className="texto-vacio">No tienes negocios registrados todavía.</p>
@@ -56,21 +60,6 @@ const MisNegocios = ({ idUsuario: propIdUsuario }) => {
                   {negocio.Descripcion?.length > 100
                     ? negocio.Descripcion.substring(0, 100) + "..."
                     : negocio.Descripcion}
-                </p>
-                <p className="info">
-                  <strong>Ciudad:</strong> {negocio.Ciudad}
-                </p>
-                <p className="info">
-                  <strong>Dirección:</strong> {negocio.Direccion}
-                </p>
-                <p className="info">
-                  <strong>Horario:</strong> {negocio.Horario}
-                </p>
-                <p className="info">
-                  <strong>Teléfono:</strong> {negocio.Telefono}
-                </p>
-                <p className="info">
-                  <strong>RUT:</strong> {negocio.RUT}
                 </p>
               </div>
             </div>

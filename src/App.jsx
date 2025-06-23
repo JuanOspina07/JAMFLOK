@@ -17,6 +17,7 @@ import Privacidad from "./Components/Shared/Privacidad";
 import Ayuda from "./Components/Shared/Ayuda";
 import Condiciones from "./Components/Shared/Condiciones";
 import PanelAjustes from "./Components/Shared/PanelAjustes";
+import PanelAjustesCliente from "./Components/Shared/PanelAjustesCliente";
 import EditarPanel from "./Components/Shared/EditarPanel";
 import Reseñas from "./Components/Shared/Reseñas";
 import EditarPanelUser from "./Components/Shared/EditarPanelUser";
@@ -28,6 +29,7 @@ function App() {
       <Route path="/cliente" element={<PaginaCliente />} />
       <Route path="/emprendedor" element={<PaginaEmprendedor />} />
       <Route path="/ajustes" element={<PanelAjustes />} />
+      <Route path="/ajustesCliente" element={<PanelAjustesCliente />} />
       <Route path="/editar-panel" element={<EditarPanel />} />
       <Route path="/editar-panel-cliente" element={<EditarPanelUser />} />
       <Route path="/Reseñas" element={<Reseñas />} />

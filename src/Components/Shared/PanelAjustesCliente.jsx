@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ChevronRight } from "lucide-react";
-import Sidebar from "./SideBar";
+import Sidebar from "./SideBarCliente";
 import "../Styles/PanelAjustes.css";
 import {
   Card,
@@ -14,7 +14,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 
-const PanelAjustesVortex = () => {
+const PanelAjustesCliente = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -58,7 +58,7 @@ const PanelAjustesVortex = () => {
         break;
     }
   };
-  
+    
 
   if (loading) {
     return (
@@ -259,4 +259,4 @@ const PanelAjustesVortex = () => {
   );
 };
 
-export default PanelAjustesVortex;
+export default PanelAjustesCliente;

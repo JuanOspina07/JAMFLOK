@@ -1,20 +1,35 @@
 
 .detalle-negocio {
   max-width: 960px;
-  margin: 4rem auto;
-  background-color: #ffffff;
+  margin: 2rem auto;
+  background-color: #2c2c2c;
   padding: 3rem;
+  height: 70vh;
+  overflow-y: auto;
   border-radius: 24px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   font-family: 'Segoe UI', sans-serif;
   color: #2c2c2c;
   animation: fadeInUp 0.6s ease-in-out;
 }
+.layout-negocio-xps9 {
+  display: flex;
+}
+
+
+.detalle-negocio::-webkit-scrollbar {
+  width: 6px;
+}
+
+.detalle-negocio::-webkit-scrollbar-thumb {
+  background-color: #C6A664;
+  border-radius: 10px;
+}
 
 
 .detalle-negocio h2 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   color: #c6a664;
   margin-bottom: 1.5rem;
   font-weight: 700;
@@ -22,14 +37,15 @@
 
 .detalle-negocio img {
   display: block;
-  max-width: 50%;
+  max-width: 100%;
   height: auto;
+  max-height: 300px;           /* ✅ Limita altura máxima para imágenes muy grandes */
   margin: 1rem auto;
   border-radius: 20px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   transition: transform 0.4s ease;
+  object-fit: contain;         /* ✅ Asegura que no se recorte */
+  background-color: #2c2c2c;   /* ✅ Fondo por si es una imagen PNG con transparencia */
 }
-
 .detalle-negocio img:hover {
   transform: scale(1.02);
 }
@@ -39,10 +55,10 @@
   grid-template-columns: 1fr;
   gap: 1.2rem;
   margin-top: 2rem;
-  background-color: #f9f7f1;
+  background-color: #2c2c2c;
   padding: 2rem;
   border-radius: 16px;
-  border: 1px solid #eee3cb;
+  color: #fff;
 }
 
 .info-item {
@@ -52,14 +68,14 @@
   font-size: 1.05rem;
 }
 
-.info-label {
+.info-label2323 {
   font-weight: 600;
-  /* color: #c6a664; */
+  color: #c6a664;
   min-width: 120px;
 }
 
-.info-value {
-  color: #2c2c2c;
+.info-valueeeee {
+  color: #fff;
   flex: 1;
   line-height: 1.6;
 }
@@ -104,7 +120,7 @@
 }
 
 .producto-card {
-  background-color: #fffefc;
+  background-color: #fff;
   border-radius: 16px;
   padding: 1.5rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
@@ -122,10 +138,10 @@
 }
 
 .producto-card h4 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #2c2c2c;
   margin-bottom: 0.6rem;
-  font-weight: 600;
+  font-weight: 900;
 }
 
 
@@ -137,7 +153,12 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-
+.regresar3432{
+  font-size: 20px;
+  height: 50px;
+  width: 110px;
+  background-color: #2c2c2c;
+}
 
 .producto-card p {
   font-size: 0.95rem;

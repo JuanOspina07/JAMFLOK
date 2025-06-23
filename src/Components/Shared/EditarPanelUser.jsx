@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Loader2, Eye, EyeOff, ChevronRight } from "lucide-react";
-import SidebarCliente from "./SideBarCliente";
+import Sidebar from "./SideBarCliente";
 import "../Styles/EditarPanel.css";
 import {
   Card,
@@ -297,24 +297,30 @@ const EditarPanelUser = () => {
       </div>
     );
   }
+
   return (
-    <div className="dashboard-container">
-      <SidebarCliente onLogout={() => localStorage.removeItem("idUsuario")} />
-      <div className="main-content">
-        <header className="content-header">
-          <Typography variant="h1">Editar Perfil</Typography>
-          <Typography variant="body2">
+    <div className="ep-dashboard-layout">
+      <Sidebar onLogout={() => localStorage.removeItem("idUsuario")} />
+      <div className="ep-content-area">
+        <header className="ep-content-header">
+          <Typography variant="h1" className="ep-title">
+            Editar Perfil
+          </Typography>
+          <Typography variant="body2" className="ep-subtitle">
             Actualiza tu información personal
           </Typography>
         </header>
 
-        <form onSubmit={handleSubmit}>
-          <Grid container spacing={3} className="cards-grid">
+        <form onSubmit={handleSubmit} className="ep-form">
+          <Grid container spacing={3} className="ep-form-grid">
             {/* Datos Personales */}
             <Grid item xs={12} md={12}>
-              <Card className="info-card">
-                <CardHeader title="Datos Personales" className="card-header" />
-                <CardContent className="card-body">
+              <Card className="ep-info-panel">
+                <CardHeader
+                  title="Datos Personales"
+                  className="ep-panel-header"
+                />
+                <CardContent className="ep-panel-content">
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                       <TextField
@@ -325,6 +331,7 @@ const EditarPanelUser = () => {
                         required
                         fullWidth
                         variant="outlined"
+                        className="ep-text-field"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -335,6 +342,7 @@ const EditarPanelUser = () => {
                         onChange={handleChange}
                         fullWidth
                         variant="outlined"
+                        className="ep-text-field"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -346,6 +354,7 @@ const EditarPanelUser = () => {
                         required
                         fullWidth
                         variant="outlined"
+                        className="ep-text-field"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -356,6 +365,7 @@ const EditarPanelUser = () => {
                         onChange={handleChange}
                         fullWidth
                         variant="outlined"
+                        className="ep-text-field"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -369,6 +379,7 @@ const EditarPanelUser = () => {
                         fullWidth
                         variant="outlined"
                         inputProps={{ min: 1, max: 120 }}
+                        className="ep-text-field"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -382,27 +393,36 @@ const EditarPanelUser = () => {
                         fullWidth
                         variant="outlined"
                         InputLabelProps={{ shrink: true }}
+                        className="ep-text-field"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                      <FormControl fullWidth variant="outlined">
-                        <InputLabel id="tipo-documento-label">
+                      <FormControl
+                        fullWidth
+                        variant="outlined"
+                        className="ep-form-control"
+                      >
+                        <InputLabel id="ep-tipo-documento-label">
                           Tipo Documento *
                         </InputLabel>
                         <Select
-                          labelId="tipo-documento-label"
+                          labelId="ep-tipo-documento-label"
                           name="ID_TIPO_DOCUMENTO"
                           value={formData.ID_TIPO_DOCUMENTO}
                           onChange={handleChange}
                           required
                           label="Tipo Documento *"
                           displayEmpty
+                          className="ep-select"
                         >
-                          <MenuItem value="">Seleccione...</MenuItem>
+                          <MenuItem value="" className="ep-menu-item">
+                            Seleccione...
+                          </MenuItem>
                           {tiposDocumento.map((doc) => (
                             <MenuItem
                               key={doc.ID_TIPO_DOCUMENTO}
                               value={doc.ID_TIPO_DOCUMENTO}
+                              className="ep-menu-item"
                             >
                               {doc.Nombre}
                             </MenuItem>
@@ -419,6 +439,7 @@ const EditarPanelUser = () => {
                         required
                         fullWidth
                         variant="outlined"
+                        className="ep-text-field"
                       />
                     </Grid>
                   </Grid>
@@ -428,25 +449,36 @@ const EditarPanelUser = () => {
 
             {/* Ubicación */}
             <Grid item xs={12} md={12}>
-              <Card className="info-card">
-                <CardHeader title="Ubicación" className="card-header" />
-                <CardContent className="card-body">
+              <Card className="ep-info-panel">
+                <CardHeader title="Ubicación" className="ep-panel-header" />
+                <CardContent className="ep-panel-content">
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={4}>
-                      <FormControl fullWidth variant="outlined">
-                        <InputLabel id="pais-label">País *</InputLabel>
+                      <FormControl
+                        fullWidth
+                        variant="outlined"
+                        className="ep-form-control"
+                      >
+                        <InputLabel id="ep-pais-label">País *</InputLabel>
                         <Select
-                          labelId="pais-label"
+                          labelId="ep-pais-label"
                           name="ID_PAIS"
                           value={formData.ID_PAIS}
                           onChange={(e) => handlePaisChange(e.target.value)}
                           required
                           label="País *"
                           displayEmpty
+                          className="ep-select"
                         >
-                          <MenuItem value="">Seleccione país...</MenuItem>
+                          <MenuItem value="" className="ep-menu-item">
+                            Seleccione país...
+                          </MenuItem>
                           {paises.map((pais) => (
-                            <MenuItem key={pais.ID_PAIS} value={pais.ID_PAIS}>
+                            <MenuItem
+                              key={pais.ID_PAIS}
+                              value={pais.ID_PAIS}
+                              className="ep-menu-item"
+                            >
                               {pais.Nombre}
                             </MenuItem>
                           ))}
@@ -454,12 +486,16 @@ const EditarPanelUser = () => {
                       </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                      <FormControl fullWidth variant="outlined">
-                        <InputLabel id="departamento-label">
+                      <FormControl
+                        fullWidth
+                        variant="outlined"
+                        className="ep-form-control"
+                      >
+                        <InputLabel id="ep-departamento-label">
                           Departamento *
                         </InputLabel>
                         <Select
-                          labelId="departamento-label"
+                          labelId="ep-departamento-label"
                           name="ID_DEPARTAMENTO"
                           value={formData.ID_DEPARTAMENTO}
                           onChange={(e) =>
@@ -469,14 +505,16 @@ const EditarPanelUser = () => {
                           required
                           label="Departamento *"
                           displayEmpty
+                          className="ep-select"
                         >
-                          <MenuItem value="">
+                          <MenuItem value="" className="ep-menu-item">
                             Seleccione departamento...
                           </MenuItem>
                           {departamentos.map((depto) => (
                             <MenuItem
                               key={depto.ID_DEPARTAMENTO}
                               value={depto.ID_DEPARTAMENTO}
+                              className="ep-menu-item"
                             >
                               {depto.Nombre}
                             </MenuItem>
@@ -485,10 +523,14 @@ const EditarPanelUser = () => {
                       </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                      <FormControl fullWidth variant="outlined">
-                        <InputLabel id="ciudad-label">Ciudad *</InputLabel>
+                      <FormControl
+                        fullWidth
+                        variant="outlined"
+                        className="ep-form-control"
+                      >
+                        <InputLabel id="ep-ciudad-label">Ciudad *</InputLabel>
                         <Select
-                          labelId="ciudad-label"
+                          labelId="ep-ciudad-label"
                           name="ID_CIUDAD"
                           value={formData.ID_CIUDAD}
                           onChange={(e) => handleCiudadChange(e.target.value)}
@@ -496,12 +538,16 @@ const EditarPanelUser = () => {
                           required
                           label="Ciudad *"
                           displayEmpty
+                          className="ep-select"
                         >
-                          <MenuItem value="">Seleccione ciudad...</MenuItem>
+                          <MenuItem value="" className="ep-menu-item">
+                            Seleccione ciudad...
+                          </MenuItem>
                           {ciudades.map((ciudad) => (
                             <MenuItem
                               key={ciudad.ID_CIUDAD}
                               value={ciudad.ID_CIUDAD}
+                              className="ep-menu-item"
                             >
                               {ciudad.Nombre}
                             </MenuItem>
@@ -516,9 +562,9 @@ const EditarPanelUser = () => {
 
             {/* Contacto y Cuenta */}
             <Grid item xs={12} md={12}>
-              <Card className="info-card">
-                <CardHeader title="Contacto" className="card-header" />
-                <CardContent className="card-body">
+              <Card className="ep-info-panel">
+                <CardHeader title="Contacto" className="ep-panel-header" />
+                <CardContent className="ep-panel-content">
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                       <TextField
@@ -530,6 +576,7 @@ const EditarPanelUser = () => {
                         required
                         fullWidth
                         variant="outlined"
+                        className="ep-text-field"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -541,6 +588,7 @@ const EditarPanelUser = () => {
                         required
                         fullWidth
                         variant="outlined"
+                        className="ep-text-field"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -552,6 +600,7 @@ const EditarPanelUser = () => {
                         required
                         fullWidth
                         variant="outlined"
+                        className="ep-text-field"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -564,17 +613,19 @@ const EditarPanelUser = () => {
                         fullWidth
                         variant="outlined"
                         placeholder="Nueva contraseña"
+                        className="ep-text-field"
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
                               <IconButton
                                 onClick={() => setShowPassword(!showPassword)}
                                 edge="end"
+                                className="ep-icon-btn"
                               >
                                 {showPassword ? (
-                                  <EyeOff size={18} />
+                                  <EyeOff size={18} className="ep-icon" />
                                 ) : (
-                                  <Eye size={18} />
+                                  <Eye size={18} className="ep-icon" />
                                 )}
                               </IconButton>
                             </InputAdornment>
@@ -588,9 +639,9 @@ const EditarPanelUser = () => {
             </Grid>
           </Grid>
 
-          <div className="form-actions">
+          <div className="ep-form-actions">
             <Button
-              className="secondary-button"
+              className="ep-cancel-btn"
               onClick={() => navigate("/ajustes")}
               disabled={isSaving}
               variant="outlined"
@@ -598,12 +649,16 @@ const EditarPanelUser = () => {
               Cancelar
             </Button>
             <Button
-              className="primary-button"
+              className="ep-save-btn"
               type="submit"
               disabled={isSaving}
               variant="contained"
-              startIcon={isSaving ? <CircularProgress size={18} /> : null}
-              endIcon={!isSaving ? <ChevronRight size={18} /> : null}
+              startIcon={
+                isSaving ? <CircularProgress size={18} className="ep-spinner" /> : null
+              }
+              endIcon={
+                !isSaving ? <ChevronRight size={18} className="ep-icon" /> : null
+              }
             >
               {isSaving ? "Guardando..." : "Guardar Cambios"}
             </Button>
@@ -613,5 +668,4 @@ const EditarPanelUser = () => {
     </div>
   );
 };
-
 export default EditarPanelUser;

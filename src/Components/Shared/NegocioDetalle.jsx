@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Styles/NegocioDetalle.css";
+import Sidebar from "./SideBar";
 
 const DetalleNegocio = () => {
   const { id } = useParams(); 
@@ -28,16 +29,19 @@ const DetalleNegocio = () => {
   if (!negocio) return <p>Cargando negocio...</p>;
 
   return (
+    <div className="layout-negocio-xps9">
+      <Sidebar onLogout={() => localStorage.removeItem("idUsuario")} />
     <div className="detalle-negocio">
+       
       <h2>{negocio.NombreNegocio}</h2>
       <img src={negocio.Imagen} alt={negocio.NombreNegocio} className="imagen-negocio" />
 
       <div className="info-negocio">
-        <div className="info-item"><span className="info-label">🧾 RUT:</span><span className="info-value">{negocio.RUT}</span></div>
-        <div className="info-item"><span className="info-label">📄 Descripción:</span><span className="info-value">{negocio.Descripcion}</span></div>
-        <div className="info-item"><span className="info-label">📍 Dirección:</span><span className="info-value">{negocio.Direccion}</span></div>
-        <div className="info-item"><span className="info-label">⏰ Horario:</span><span className="info-value">{negocio.Horario}</span></div>
-        <div className="info-item"><span className="info-label">📞 Teléfono:</span><span className="info-value">{negocio.NumTelefono}</span></div>
+        <div className="info-item"><span className="info-label2323">🧾 RUT:</span><span className="info-valueeeee">{negocio.RUT}</span></div>
+        <div className="info-item"><span className="info-label2323">📄 Descripción:</span><span className="info-valueeeee">{negocio.Descripcion}</span></div>
+        <div className="info-item"><span className="info-label2323">📍 Dirección:</span><span className="info-valueeeee">{negocio.Direccion}</span></div>
+        <div className="info-item"><span className="info-label2323">⏰ Horario:</span><span className="info-valueeeee">{negocio.Horario}</span></div>
+        <div className="info-item"><span className="info-label2323">📞 Teléfono:</span><span className="info-valueeeee">{negocio.NumTelefono}</span></div>
       </div>
 
       <h3>Productos</h3>
@@ -73,6 +77,7 @@ const DetalleNegocio = () => {
           ))
         )}
       </div>
+    </div>
     </div>
   );
 };

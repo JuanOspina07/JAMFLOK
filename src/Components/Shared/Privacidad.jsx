@@ -1,17 +1,20 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import logo from "../../../public/Logo.png";
+import { useNavigate } from "react-router-dom";
 import TopBar from "./TopBar"; 
 import "../Styles/Privacidad.css";
 const Privacidad = () => {
+   const navigate = useNavigate();
   return (
     <div>
       <TopBar />
       <div className="cont">
         <div className="privacidad">
+          <button className="btn-volver" onClick={() => navigate(-1)}>←</button>
           <div className="box_logo">
             <img src={logo} alt="Logo" className="Logo7" />
           </div>
+           
 
           <h2>POLÍTICA DE PRIVACIDAD</h2>
           <h3>Protección de tus datos personales durante la recuperación de contraseña</h3>
