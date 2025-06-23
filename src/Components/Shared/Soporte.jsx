@@ -68,23 +68,22 @@ const Soporte = () => {
     <div className="preguntas">
       {preguntas.map((item, index) => (
         <div key={index} className="pregunta-item">
-          <button 
-            className="pregunta" 
+          <button
+            className={`pregunta ${preguntaActiva === index ? 'active' : ''}`}
             onClick={() => setPreguntaActiva(index === preguntaActiva ? null : index)}
           >
             {item.pregunta}
-            <span className="checkmark"></span>
+            <span className="checkmark">{preguntaActiva === index ? '▲' : '▼'}</span>
           </button>
           {preguntaActiva === index && <div className="respuesta">{item.respuesta}</div>}
         </div>
       ))}
     </div>
   );
-  
 
   return (
     <div className="soporte-container">
-        <TopBar />
+      <TopBar />
 
       {mostrarCarrito && (
         <div 
@@ -97,7 +96,7 @@ const Soporte = () => {
       )}
 
       <div className="content">
-        <h2 className="titulo">Temas de ayuda</h2>
+        <h2 className="titulosoporte">Temas de ayuda</h2>
         
         <div className="help-section">
           <div 
@@ -108,7 +107,7 @@ const Soporte = () => {
             }}
           >
             <span>Compradores</span>
-            <span className="checkmark">v</span>
+            <span className="checkmark">{seccion === 'compradores' ? '▲' : '▼'}</span>
           </div>
           {seccion === 'compradores' && renderPreguntas(preguntasCompradores)}
         </div>
@@ -122,7 +121,7 @@ const Soporte = () => {
             }}
           >
             <span>Emprendedores</span>
-            <span className="checkmark">v</span>
+            <span className="checkmark">{seccion === 'emprendedores' ? '▲' : '▼'}</span>
           </div>
           {seccion === 'emprendedores' && renderPreguntas(preguntasEmprendedores)}
         </div>

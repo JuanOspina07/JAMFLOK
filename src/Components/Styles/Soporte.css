@@ -1,4 +1,4 @@
-
+/* Estilos del contenedor principal (sin cambios) */
 .soporte-container {
   min-height: 100vh;
   background-size: cover;
@@ -14,6 +14,7 @@
   display: none; 
 }
 
+/* Estilos del encabezado (sin cambios) */
 .header {
   display: flex;
   justify-content: space-between;
@@ -22,8 +23,6 @@
   position: relative;
   z-index: 1;
 }
-
-
 
 .nav-links {
   display: flex;
@@ -52,6 +51,7 @@
   background-color: #C6A664;
 }
 
+
 .content {
   max-width: 800px;
   margin: 90px auto;
@@ -59,39 +59,46 @@
   z-index: 1;
 }
 
-.titulo {
-  font-family: 'Montserrat', serif;
-  font-size: 1.8rem;
+/* Título "Temas de ayuda" ajustado */
+.titulosoporte {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem; /* Tamaño aumentado para que sea más grande */
   margin-bottom: 30px;
-  color: #121212;
+  color: #C6A664; 
   text-align: center;
 }
 
+/* Contenedor de secciones de preguntas (ajustado) */
 .help-section {
   margin-bottom: 30px;
-  border: 1px solid #E5E5E5;
-  border-radius: 8px;
+  border: 1px solid #444;
+  border-radius: 30px; 
   overflow: hidden;
+  background-color: #2c2c2c; /* Fondo oscuro */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Encabezado de la sección (sin cambios) */
 .section-header {
-  background-color: #FFFFFF;
+  background-color: #333;
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   font-weight: 600;
-  color: #121212;
-  border-bottom: 1px solid #E5E5E5;
+  color: #C6A664;
+  transition: background-color 0.3s ease;
 }
 
 .section-header:hover {
-  background-color: #F5F5F5;
+  background-color: #2c2c2c; /* Dorado al señalar */
+  color: #fff;
 }
 
 .section-header.active {
-  background-color: #F5F5F5;
+  background-color: #C6A664; /* Dorado cuando está activa */
+  color: #fff;
 }
 
 .checkmark {
@@ -99,21 +106,24 @@
   font-size: 1.2rem;
 }
 
+/* Contenedor de preguntas (sin cambios) */
 .preguntas {
-  background-color: #FFFFFF;
+  background-color: #2c2c2c; /* Fondo oscuro */
 }
 
+/* Cada ítem de pregunta (sin cambios) */
 .pregunta-item {
-  border-bottom: 1px solid #E5E5E5;
+  border-bottom: 1px solid #444;
 }
 
 .pregunta-item:last-child {
   border-bottom: none;
 }
 
+/* Botón de pregunta (sin cambios) */
 .pregunta {
   width: 100%;
-  padding: 15px 20px;
+  padding: 10px 15px;
   cursor: pointer;
   font-weight: 500;
   text-align: left;
@@ -122,30 +132,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #2C2C2C;
+  color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .pregunta:hover {
-  background-color: #F5F5F5;
-  color: #2C2C2C;
+  background-color: #2c2c2c; /* Dorado al señalar */
+  color: #fff;
 }
 
+.pregunta.active {
+  background-color: #2c2c2c; /* Dorado cuando está activa */
+  color: #fff;
+}
+
+/* Respuesta (sin cambios) */
 .respuesta {
   padding: 15px 20px 20px;
-  background-color: #F9F9F9;
-  color: #2C2C2C;
-  border-top: 1px dashed #E5E5E5;
+  background-color: #C6A664; /* Tono más claro para respuestas */
+  color: #fff;
+  border-top: 1px dashed #444;
   font-size: 0.95rem;
   line-height: 1.5;
+  transition: background-color 0.3s ease;
 }
 
+/* Sección de contacto (tipografía ajustada) */
 .contacto {
   text-align: center;
   margin-top: 50px;
 }
 
 .contacto h3 {
-  font-family: 'Montserrat', serif;
+  font-family: 'Montserrat', sans-serif; /* Misma tipografía que los demás elementos */
   font-size: 1.5rem;
   margin-bottom: 20px;
   color: #121212;
@@ -164,24 +183,22 @@
 }
 
 .contacto-btn:hover {
-  background-color: #B59554;
+  background-color: #2c2c2c; /* Tono dorado más claro al señalar */
 }
 
-
-
-
+/* Estilos adicionales que no se tocan */
 .nuevo-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
   background-color: #c0b9b9;
-  color: white;
+  color: #C6A664;
   font-family: 'Montserrat', sans-serif;
 }
 
 .nuevo-logo {
-  font-family: 'Montserrat', serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 2rem;
   color: #C6A664;
@@ -217,7 +234,7 @@
 }
 
 .main-logo {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', sans-serif;
   font-size: 2.8rem;
   font-weight: bold;
   color: #C6A664;
@@ -238,7 +255,6 @@
   font-size: 1rem;
   font-weight: bold;
   color: #121212;
-
   cursor: pointer;
   padding: 6px 10px;
   position: relative;
@@ -259,7 +275,6 @@
   background-color: #B59554; 
 }
 
-
 .carrito-hover {
   position: relative;
 }
@@ -269,10 +284,3 @@
   right: 20px;
   top: 80px;
 }
-
-
-
-
-
-
-
