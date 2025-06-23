@@ -1,42 +1,68 @@
-import React from 'react';
-import "../Styles/Favoritos.css";
-import logo from "../../../public/Logo.png";
-import ajustes from "../../../public/Ajustes.png";
-import casita from "../../../public/Casita.png";
-import regresar from "../../../public/Regresar.png";
+import React, { useState, useEffect } from 'react';
+import '../Styles/Favoritos.css';
+import Sidebar from './SideBarCliente';
 
 const Favoritos = () => {
-    return (
-        <div>
-            <div className="head">
-                <img src={logo} alt="Logo" className="Logo" />
-                <div className="opciones">
-                    <a href="Inicio.html">
-                        <button className="button_inicio">
-                            <img className="imagen1" src={ajustes} alt="Ajustes" />
-                        </button>
-                    </a>
-                    <a href="Informacion.html">
-                        <button className="button_inicio">
-                            <img className="imagen2" src={casita} alt="Inicio" />
-                        </button>
-                    </a>
-                </div>
-            </div>
+  const [favoritos, setFavoritos] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const userId = localStorage.getItem("idUsuario"); // ⬅️ Aquí lo tomamos
 
-            <div>
-                <h1>Productos favoritos</h1>
-            </div>
+  useEffect(() => {
+    const cargarFavoritos = async () => {
+      if (!userId) {
+        setError('ID de usuario no válido');
+        return;
+      }
+      setLoading(true);
+      try {
+        const res = await fetch(`http://localhost:4000/api/favoritos/${userId}`);
+        if (!res.ok) throw new Error('Error al cargar favoritos');
+        const data = await res.json();
+        setFavoritos(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    cargarFavoritos();
+  }, [userId]);
 
-            <div className="regresar_box">
-                <a href="Inicio.html">
-                    <button className="regresar">
-                        <img src={regresar} alt="Regresar" />
-                    </button>
-                </a>
+  return (
+    <div className="fav-wrapper">
+            <Sidebar onLogout={() => localStorage.removeItem("idUsuario")} />
+
+        
+      <h1 className="fav-title">Negocios Favoritos</h1>
+
+      {loading && <div className="fav-message">Cargando...</div>}
+      {error && <div className="fav-error">{error}</div>}
+
+      {!loading && !error && favoritos.length === 0 && (
+        <div className="fav-message">No tienes negocios favoritos aún.</div>
+      )}
+
+      {!loading && !error && favoritos.length > 0 && (
+        <div className="fav-grid">
+          {favoritos.map((bus) => (
+            <div key={bus.ID_NEGOCIOS} className="fav-card">
+              <div className="fav-card-img">
+                <img
+                  src={bus.Imagen || 'https://via.placeholder.com/400x250?text=Sin+Imagen'}
+                  alt={bus.NombreNegocio}
+                />
+              </div>
+              <div className="fav-card-content">
+                <h2>{bus.NombreNegocio}</h2>
+                <p>{bus.Descripcion?.slice(0, 100) || 'Sin descripción'}</p>
+              </div>
             </div>
+          ))}
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default Favoritos;

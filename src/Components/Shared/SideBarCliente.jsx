@@ -11,7 +11,7 @@ const SideBarCliente = ({ onLogout }) => {
   const navItems = [
     { path: "/cliente", icon: <Home size={22} />, name: "Inicio" },
     { path: "/ajustesCliente", icon: <SlidersHorizontal size={22} />, name: "Ajustes" },
-    { path: "/reseñas", icon: <Star size={22} />, name: "Reseñas" },
+    { path: "/favoritos", icon: <Star size={22} />, name: "Favoritos" },
   ];
 
   const handleLogout = () => {

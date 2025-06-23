@@ -307,7 +307,7 @@ function Registro () {
             <input type="password" value={contraseña} onChange={(e) => setContraseña(e.target.value)} required className="inputfield2" />
           
           </div>
-          <button className="btresg" type="submit" onClick={handleRegister}>RegistrO</button>
+          <button className="btresg" type="submit" onClick={handleRegister}>Registro</button>
         </div>
       </main>
     </div>

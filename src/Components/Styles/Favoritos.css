@@ -1,48 +1,94 @@
-.head{
-    align-items: center;
-    background: #2c2c2c;
-    box-shadow: 0px 0px 30px #000000;
-    width: 8%;
-    height: 100vh;
-    margin: 0;
-    font-size: 0.6em;
+/* Contenedor general */
+.fav-wrapper {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Montserrat', sans-serif;
 }
-.Logo{
-    margin-top: 10%;
-    width: 100%;
+
+/* Título */
+.fav-title {
+  text-align: center;
+  font-size: 4rem;
+  color: #c6a664;
+  margin-bottom: 30px;
 }
-.opciones{
-    margin-top: 55vh;
+
+/* Mensajes (cargando / error / vacío) */
+.fav-message,
+.fav-error {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #777;
+  margin: 20px 0;
 }
-.button_inicio{
-    border: none;
-    background: none;
+
+.fav-error {
+  color: #d8000c;
 }
-.imagen1{
-    width: 75%;
+
+/* Grid de tarjetas */
+.fav-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
-.imagen2{
-    width: 40%;
+
+/* Tarjeta individual */
+.fav-card {
+  background: #2c2c2c;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
-.imagen1:hover,.imagen2:hover{
-    filter: drop-shadow(0px 0px 10px #000000);
+
+.fav-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
 }
-h1{
-    text-align: center;
-    margin-left: 10%;
-    margin-top: -42%;
-    font-size: 2em;
-    font-weight:bold
+
+/* Imagen de la tarjeta */
+.fav-card-img img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
 }
-.regresar_box{
-    margin-left: 7%;
-    margin-top: 30.5%;
+
+/* Contenido de la tarjeta */
+.fav-card-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
-.regresar{
-    border: none;
-    background: none;
-    width: 12%;
+
+.fav-card-content h2 {
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+  color: #c6a664;
 }
-.regresar img{
-    width: 100%;
+
+.fav-card-content p {
+  font-size: 1rem;
+  color: #fff;
+  margin: 0 0 12px;
+  flex-grow: 1;
+   text-align: center;
+  align-items: center;
+}
+
+/* Dirección */
+.fav-address {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: auto;
+}
+
+/* Imagen placeholder */
+.fav-card-img img[alt='Sin Imagen'] {
+  object-position: center;
+  opacity: 0.7;
 }

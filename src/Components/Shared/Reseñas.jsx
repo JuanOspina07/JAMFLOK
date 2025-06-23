@@ -1,166 +1,71 @@
-import React, { useState } from 'react';
-import { Star, User } from 'lucide-react';
-import SidebarCliente from './SideBarCliente';
-import '../Styles/Reseñas.css';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  Typography,
-  TextField,
-  Button,
-  Grid,
-  Rating,
-  Box,
-} from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../Styles/Reseñas.css";
+import { Star, StarOff } from "lucide-react";
 
 const Reseñas = () => {
-  const [reviewData, setReviewData] = useState({
-    productName: '',
-    rating: 0,
-    comment: '',
-  });
+  const { idNegocio } = useParams();
+  const navigate = useNavigate();
 
-  const [userReviews] = useState([
-    {
-      id: 1,
-      username: 'Usuario123',
-      rating: 5,
-      comment: 'Muy buen producto, llegó rápido.',
-    },
-  ]);
+  const [estrellas, setEstrellas] = useState(0);
+  const [texto, setTexto] = useState("");
+  const [enviando, setEnviando] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setReviewData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleRatingChange = (event, newValue) => {
-    setReviewData((prev) => ({ ...prev, rating: newValue }));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!reviewData.productName || !reviewData.rating || !reviewData.comment) {
-      alert('Por favor, completa todos los campos.');
+    if (estrellas === 0 || texto.trim().length === 0) {
+      setError("Debes ingresar estrellas y un comentario.");
       return;
     }
-    // Simulate submitting review (replace with API call)
-    console.log('Review submitted:', reviewData);
-    setReviewData({ productName: '', rating: 0, comment: '' });
+    setEnviando(true);
+    try {
+      await axios.post("http://localhost:4000/api/resenas", {
+        ID_CALIFICACION: estrellas,
+        ID_NEGOCIO: idNegocio,
+        Descripcion: texto.trim(),
+      });
+      navigate(-1); // volver atrás después de enviar
+    } catch (err) {
+      console.error(err);
+      setError("Ocurrió un error al enviar la reseña.");
+    } finally {
+      setEnviando(false);
+    }
   };
 
   return (
-    <div className="dashboard-container">
-      <SidebarCliente onLogout={() => localStorage.removeItem('idUsuario')} />
-      <div className="main-content">
-        <header className="content-header">
-          <Typography variant="h1">Reseñas</Typography>
-          <Typography variant="body2">Comparte tu opinión sobre productos y servicios</Typography>
-        </header>
+    <div className="resenas-page">
+      <button className="back-btn" onClick={() => navigate(-1)}>
+        ← Volver
+      </button>
+      <h2>Escribir una reseña</h2>
+      <form className="resenas-form" onSubmit={handleSubmit}>
+        <div className="stars-input">
+          {[1,2,3,4,5].map((n) => (
+            <span key={n} onClick={() => setEstrellas(n)} className="star">
+              {n <= estrellas ? (
+                <Star fill="#facc15" stroke="#facc15" size={32} />
+              ) : (
+                <StarOff stroke="#ccc" size={32} />
+              )}
+            </span>
+          ))}
+        </div>
 
-        <Grid container spacing={3} className="cards-grid">
-          <Grid item xs={12} md={12}>
-            <Card className="info-card">
-              <CardHeader title="Escribir Reseña" className="card-header" />
-              <CardContent className="card-body">
-                <Grid container spacing={3}>
-                  {/* General Section */}
-                  <Grid item xs={12}>
-                    <Typography variant="h6" className="section-title">General</Typography>
-                    <TextField
-                      label="Nombre del producto / servicio"
-                      name="productName"
-                      value={reviewData.productName}
-                      onChange={handleInputChange}
-                      fullWidth
-                      variant="outlined"
-                      required
-                      margin="normal"
-                    />
-                    <Box sx={{ mt: 2, mb: 2 }}>
-                      <Typography variant="body2" className="info-label">Valoración *</Typography>
-                      <Rating
-                        name="rating"
-                        value={reviewData.rating}
-                        onChange={handleRatingChange}
-                        precision={1}
-                        icon={<Star size={24} fill="#ffc107" stroke="#ffc107" />}
-                        emptyIcon={<Star size={24} stroke="#ffc107" />}
-                      />
-                    </Box>
-                    <TextField
-                      label="Escribir reseña"
-                      name="comment"
-                      value={reviewData.comment}
-                      onChange={handleInputChange}
-                      fullWidth
-                      variant="outlined"
-                      multiline
-                      rows={4}
-                      required
-                      margin="normal"
-                    />
-                  </Grid>
+        <textarea
+          rows="5"
+          placeholder="Escribe tu reseña..."
+          value={texto}
+          onChange={(e) => setTexto(e.target.value)}
+        />
 
-                  {/* Valoraciones Section */}
-                  <Grid item xs={12}>
-                    <Typography variant="h6" className="section-title">Valoraciones</Typography>
-                    <Box className="rating-bar">
-                      <Box className="stars">
-                        <Rating value={5} readOnly icon={<Star size={16} fill="#ffc107" stroke="#ffc107" />} />
-                      </Box>
-                      <Typography variant="body2" className="percentage">(65%)</Typography>
-                    </Box>
-                    <Box className="rating-bar">
-                      <Box className="stars">
-                        <Rating value={4} readOnly icon={<Star size={16} fill="#ffc107" stroke="#ffc107" />} />
-                      </Box>
-                      <Typography variant="body2" className="percentage">(20%)</Typography>
-                    </Box>
-                    <Box className="rating-bar">
-                      <Box className="stars">
-                        <Rating value={3} readOnly icon={<Star size={16} fill="#ffc107" stroke="#ffc107" />} />
-                      </Box>
-                      <Typography variant="body2" className="percentage">(3%)</Typography>
-                    </Box>
-                  </Grid>
-
-                  {/* User Reviews Section */}
-                  <Grid item xs={12}>
-                    <Typography variant="h6" className="section-title">Reseñas de Usuarios</Typography>
-                    {userReviews.map((review) => (
-                      <Box key={review.id} className="user-review">
-                        <Box className="user-info">
-                          <User className="user-icon" size={24} />
-                          <Typography variant="body1" className="username">{review.username}</Typography>
-                          <Rating
-                            value={review.rating}
-                            readOnly
-                            icon={<Star size={16} fill="#ffc107" stroke="#ffc107" />}
-                          />
-                        </Box>
-                        <Typography variant="body2" className="review-text">{review.comment}</Typography>
-                      </Box>
-                    ))}
-                  </Grid>
-                </Grid>
-
-                <div className="form-actions">
-                  <Button
-                    className="primary-button"
-                    onClick={handleSubmit}
-                    variant="contained"
-                    endIcon={<span>✅</span>}
-                  >
-                    Enviar
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </div>
+        {error && <p className="error">{error}</p>}
+        <button type="submit" disabled={enviando}>
+          {enviando ? "Enviando..." : "Enviar reseña"}
+        </button>
+      </form>
     </div>
   );
 };

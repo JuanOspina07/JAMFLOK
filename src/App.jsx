@@ -21,6 +21,7 @@ import PanelAjustesCliente from "./Components/Shared/PanelAjustesCliente";
 import EditarPanel from "./Components/Shared/EditarPanel";
 import Reseñas from "./Components/Shared/Reseñas";
 import EditarPanelUser from "./Components/Shared/EditarPanelUser";
+import Favoritos from "./Components/Shared/Favoritos";
 
 function App() {
   return (
@@ -32,7 +33,8 @@ function App() {
       <Route path="/ajustesCliente" element={<PanelAjustesCliente />} />
       <Route path="/editar-panel" element={<EditarPanel />} />
       <Route path="/editar-panel-cliente" element={<EditarPanelUser />} />
-      <Route path="/Reseñas" element={<Reseñas />} />
+      <Route path="/Reseñas/:idNegocio" element={<Reseñas />} />
+
       <Route path="/Login" element={<Login />} />
       <Route path="/Soporte" element={<Soporte />} />
       <Route path="/Register" element={<Register />} />
@@ -48,6 +50,7 @@ function App() {
       <Route path="/privacidad" element={<Privacidad />} />
       <Route path="/ayuda" element={<Ayuda />} />
       <Route path="/condiciones" element={<Condiciones />} />
+       <Route path="/favoritos" element={<Favoritos />} />
     </Routes>
   );
 }
