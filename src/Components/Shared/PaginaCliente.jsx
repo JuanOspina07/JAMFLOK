@@ -141,7 +141,7 @@ const PaginaCliente = () => {
               </div>
 
               <img
-                src={n.Imagen}
+                src={n.Logo}
                 alt={n.NombreNegocio}
                 className="arros-imagen"
               />

@@ -55,6 +55,7 @@ const Reseñas = () => {
         </div>
 
         <textarea
+        className="resenaclient"
           rows="5"
           placeholder="Escribe tu reseña..."
           value={texto}

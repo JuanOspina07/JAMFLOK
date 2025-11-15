@@ -43,8 +43,9 @@ export const PaginaInicio = () => {
           Iniciar sesión
         </button>
         <p className="text777">
-          ¿No tienes una cuenta? <a onClick={handleRegister}>crea una aquí</a>
+          ¿No tienes una cuenta? 
         </p>
+        <p className="text7778"><a onClick={handleRegister}>Crea una aquí</a></p>
       </div>
       <div className="redes">
         <p className="redes_text">Redes sociales</p>

@@ -264,7 +264,7 @@ const EditarPanelUser = () => {
       await axios.put(`http://localhost:4000/api/usuario/${userId}`, payload);
 
       toast.success("¡Datos actualizados correctamente!");
-      navigate("/ajustes");
+      navigate("/ajustesCliente");
     } catch (err) {
       console.error("Error al actualizar:", err);
       toast.error(err.response?.data?.message || "Error al actualizar datos");
@@ -642,7 +642,7 @@ const EditarPanelUser = () => {
           <div className="ep-form-actions">
             <Button
               className="ep-cancel-btn"
-              onClick={() => navigate("/ajustes")}
+              onClick={() => navigate("/ajustesCliente")}
               disabled={isSaving}
               variant="outlined"
             >

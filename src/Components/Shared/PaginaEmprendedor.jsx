@@ -50,7 +50,7 @@ const MisNegocios = ({ idUsuario: propIdUsuario }) => {
               style={{ cursor: "pointer" }}
             >
               <img
-                src={negocio.Imagen}
+                src={negocio.Logo}
                 alt={negocio.NombreNegocio}
                 className="imagen-negocio"
               />

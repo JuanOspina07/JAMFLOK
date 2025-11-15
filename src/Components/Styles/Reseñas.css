@@ -12,7 +12,7 @@
   background: none;
   border: none;
   font-size: 16px;
-  color: #555;
+  color: #c6a664;
   cursor: pointer;
   margin-bottom: 20px;
 }
@@ -43,7 +43,7 @@ h2 {
   transform: scale(1.1);
 }
 
-textarea {
+.resenaclient {
   width: 95%;
   resize: vertical;
   padding: 12px;
@@ -51,12 +51,15 @@ textarea {
   border-radius: 8px;
   border: 1px solid #ccc;
   font-family: 'Roboto', sans-serif;
+  color: white;
+    transition: all 0.3s ease;
 }
 
-textarea:focus {
+.resenaclient:focus {
   outline: none;
-  border-color: #c6a664;
-  box-shadow: 0 0 5px rgba(198,166,100,0.4);
+  border-color: 2px solid #c6a664;
+  box-shadow: 0 0 5px #c6a664;
+  transform: translateY(-2px);
 }
 
 button[type="submit"] {

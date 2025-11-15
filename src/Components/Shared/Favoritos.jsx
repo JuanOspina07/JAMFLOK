@@ -49,7 +49,7 @@ const Favoritos = () => {
             <div key={bus.ID_NEGOCIOS} className="fav-card">
               <div className="fav-card-img">
                 <img
-                  src={bus.Imagen || 'https://via.placeholder.com/400x250?text=Sin+Imagen'}
+                  src={bus.Logo || 'https://via.placeholder.com/400x250?text=Sin+Imagen'}
                   alt={bus.NombreNegocio}
                 />
               </div>

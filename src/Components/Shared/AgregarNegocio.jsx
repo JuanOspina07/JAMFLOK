@@ -3,6 +3,7 @@ import axios from "axios";
 import "../Styles/AgregarNegocio.css";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./SideBar";
+import Swal from 'sweetalert2';
 
 const NuevoNegocio = () => {
   const navigate = useNavigate();
@@ -75,11 +76,22 @@ const NuevoNegocio = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:4000/api/negociosnuevo", negocio);
-      alert("Negocio registrado con éxito");
+       Swal.fire({
+        icon: 'success',
+        title: 'Exitoo!!',
+        text: 'Negocio registrado con exito.',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Entendido'
+      });
       navigate("/emprendedor");
     } catch (error) {
-      console.error("Error al guardar negocio:", error);
-      alert("Error al registrar negocio");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se pudo añadir el negocio'+{error},
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Entendido'
+      });
     }
   };
 

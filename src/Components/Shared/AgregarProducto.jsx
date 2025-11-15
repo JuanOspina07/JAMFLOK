@@ -23,16 +23,28 @@ const AgregarProducto = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:4000/api/productosnuevo", producto);
-      alert("Producto registrado con éxito");
+      Swal.fire({
+              icon: 'success',
+              title: 'Exitoo!!',
+              text: 'Producto agregado con exito.',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Entendido'
+            });
       navigate(`/negocio/${id}`);
     } catch (error) {
-      console.error("Error al guardar producto:", error);
-      alert("Error al registrar producto");
+      Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo añadir el producto'+{error},
+              confirmButtonColor: '#d33',
+              confirmButtonText: 'Entendido'
+            });
     }
   };
 
   return (
     <div className="form-producto-container">
+      <button className="btn-volver" onClick={() => navigate(-1)}>←</button>
       <h2>Agregar Producto</h2>
       <form onSubmit={handleSubmit} className="form-producto">
         <div className="input-group">

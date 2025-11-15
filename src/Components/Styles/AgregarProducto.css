@@ -1,7 +1,7 @@
 .form-producto-container {
   max-width: 700px;
-  margin: 3rem auto;
-  background: #fff;
+  margin: 2rem auto;
+  background: #2e2e2e;
   padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
@@ -13,7 +13,6 @@
   text-align: center;
   color: #c6a664;
   font-size: 2rem;
-  margin-bottom: 2rem;
 }
 
 .form-producto {

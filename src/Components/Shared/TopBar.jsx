@@ -17,16 +17,10 @@ const TopBar = () => {
           <button className="nav-button" onClick={() => navigate("/")}>
             Inicio
           </button>
-          <button
-            className="nav-button active"
-            onClick={() => navigate("/soporte")}
-          >
+          <button className="nav-button" onClick={() => navigate("/soporte")}>
             Soporte
           </button>
-           <button
-            className="nav-button active"
-            onClick={handleInformacion}
-          >
+           <button className="nav-button" onClick={handleInformacion}>
             Información
           </button>
         </nav>
